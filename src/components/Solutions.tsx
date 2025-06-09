@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Cctv, Shield } from 'lucide-react';
+import { Cctv, Shield, AlertTriangle } from 'lucide-react';
 
 const Solutions = () => {
   return (
@@ -14,12 +14,12 @@ const Solutions = () => {
               Specialized Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Advanced technology solutions for comprehensive security management and communication systems.
+              Advanced technology solutions for comprehensive security management, communication systems, and workplace safety.
             </p>
           </div>
 
           {/* Solutions Grid */}
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-3 gap-12">
             {/* Command Center Solutions */}
             <Card className="border-none shadow-xl overflow-hidden">
               <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5">
@@ -120,6 +120,59 @@ const Solutions = () => {
                     <div>
                       <h4 className="font-semibold text-primary">Customized Solutions</h4>
                       <p className="text-sm text-muted-foreground">For Public Safety, Banking, Mining, Logistics & More</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Hazard and Safety Solutions */}
+            <Card className="border-none shadow-xl overflow-hidden">
+              <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5">
+                <img 
+                  src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Safety Systems"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-8">
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                    <AlertTriangle className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">Hazard and Safety Solutions</h3>
+                </div>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Comprehensive workplace safety and hazard management systems designed to protect 
+                  personnel and assets through advanced monitoring and response technologies.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-semibold text-primary">Risk Assessment Software</h4>
+                      <p className="text-sm text-muted-foreground">Automated hazard identification and risk evaluation systems</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-semibold text-primary">Emergency Response Management</h4>
+                      <p className="text-sm text-muted-foreground">Real-time incident response and evacuation coordination</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-semibold text-primary">Safety Compliance Tracking</h4>
+                      <p className="text-sm text-muted-foreground">Automated reporting and regulatory compliance monitoring</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                    <div>
+                      <h4 className="font-semibold text-primary">Environmental Monitoring</h4>
+                      <p className="text-sm text-muted-foreground">Air quality, noise levels, and environmental hazard detection</p>
                     </div>
                   </div>
                 </div>

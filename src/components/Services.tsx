@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Bell, Users, Car, Cctv, ArrowRight } from 'lucide-react';
+import { Shield, Bell, Users, Car, Cctv, ArrowRight, Monitor } from 'lucide-react';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,6 +60,13 @@ const Services = () => {
       description: "Expert risk assessment, crisis management, and emergency preparedness consulting.",
       features: ["Comprehensive security audits", "Threat risk analysis", "Emergency planning design", "Compliance assessments"],
       highlight: "Expert Analysis"
+    },
+    {
+      icon: Monitor,
+      title: "Specialized Software Solutions for the Security Industry",
+      description: "Custom software development and implementation for security operations and management.",
+      features: ["Security management systems", "Access control software", "Incident reporting platforms", "Real-time monitoring dashboards"],
+      highlight: "Technology Focus"
     }
   ];
 
