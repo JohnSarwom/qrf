@@ -1,12 +1,15 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Shield, Bell, Users, Car, Cctv, ArrowRight, Monitor } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -130,7 +133,7 @@ const Services = () => {
                     </p>
 
                     {/* Features */}
-                    <div className={`transition-all duration-300 ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-20 opacity-100'}`}>
+                    <div className={`transition-all duration-300 ${isExpanded ? 'max-h-96 opacity-100' : 'max-h-20 opacity-100'} mb-6`}>
                       <ul className={`space-y-3 ${isExpanded ? '' : 'overflow-hidden'}`}>
                         {service.features.slice(0, isExpanded ? service.features.length : 2).map((feature, featureIndex) => (
                           <li key={featureIndex} className="text-sm text-muted-foreground flex items-start">
@@ -141,8 +144,19 @@ const Services = () => {
                       </ul>
                     </div>
 
+                    {/* Get Quote Button */}
+                    <Button 
+                      className="w-full mb-4"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate('/quote');
+                      }}
+                    >
+                      Get Quote for This Service
+                    </Button>
+
                     {/* Expand Button */}
-                    <div className="mt-6 flex items-center justify-between">
+                    <div className="flex items-center justify-between">
                       <div className="text-xs text-primary font-medium">
                         {isExpanded ? 'Less Details' : 'More Details'}
                       </div>
@@ -154,26 +168,6 @@ const Services = () => {
                 </Card>
               );
             })}
-          </div>
-
-          {/* Call to Action */}
-          <div className={`text-center mt-16 transition-all duration-1000 delay-500 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0'
-          }`}>
-            <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Need Immediate Security Response?</h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Our 24/7 emergency response teams are standing by to handle any security situation across Papua New Guinea.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-                  Emergency Hotline
-                </button>
-                <button className="border border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-white transition-colors">
-                  Request Quote
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

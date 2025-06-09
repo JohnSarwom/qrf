@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { label: 'Home', href: '#home' },
@@ -13,6 +15,7 @@ const Navigation = () => {
     { label: 'Services', href: '#services' },
     { label: 'Solutions', href: '#solutions' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Get Quote', href: '/quote', isRoute: true },
   ];
 
   useEffect(() => {
@@ -23,11 +26,15 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href: string, isRoute?: boolean) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isRoute) {
+      navigate(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -39,7 +46,7 @@ const Navigation = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">QRF</span>
               </div>
@@ -53,8 +60,10 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => handleNavClick(item.href)}
-                  className="text-foreground hover:text-primary transition-colors font-medium"
+                  onClick={() => handleNavClick(item.href, item.isRoute)}
+                  className={`text-foreground hover:text-primary transition-colors font-medium ${
+                    item.label === 'Get Quote' ? 'text-primary font-semibold' : ''
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -80,8 +89,10 @@ const Navigation = () => {
                   {navItems.map((item) => (
                     <button
                       key={item.label}
-                      onClick={() => handleNavClick(item.href)}
-                      className="text-lg font-medium hover:text-primary transition-colors text-left"
+                      onClick={() => handleNavClick(item.href, item.isRoute)}
+                      className={`text-lg font-medium hover:text-primary transition-colors text-left ${
+                        item.label === 'Get Quote' ? 'text-primary font-semibold' : ''
+                      }`}
                     >
                       {item.label}
                     </button>

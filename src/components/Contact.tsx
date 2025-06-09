@@ -4,9 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Shield } from 'lucide-react';
+import { MapPin, Shield, Phone, FileText } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -22,11 +25,40 @@ const Contact = () => {
             </p>
           </div>
 
+          {/* Emergency Response Call to Action */}
+          <div className="mb-16">
+            <div className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-4">Need Immediate Security Response?</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Our 24/7 emergency response teams are standing by to handle any security situation across Papua New Guinea.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button className="bg-primary text-white px-8 py-4 text-lg font-semibold hover:bg-primary/90 transition-colors">
+                  <Phone className="mr-2 w-5 h-5" />
+                  Emergency Hotline
+                </Button>
+                <Button 
+                  variant="outline"
+                  className="border-2 border-primary text-primary px-8 py-4 text-lg font-semibold hover:bg-primary hover:text-white transition-colors"
+                  onClick={() => navigate('/quote')}
+                >
+                  <FileText className="mr-2 w-5 h-5" />
+                  Request Quote
+                </Button>
+              </div>
+            </div>
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card className="border-none shadow-xl">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-primary mb-6">Request a Quote</h3>
+                <h3 className="text-2xl font-bold text-primary mb-6">Send us a Message</h3>
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
