@@ -1,12 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Shield, ArrowRight, FileText } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Shield, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
@@ -83,10 +81,9 @@ const Hero = () => {
               size="lg" 
               variant="outline" 
               className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 text-lg backdrop-blur-sm transition-all duration-300"
-              onClick={() => navigate('/quote')}
+              onClick={() => scrollToSection('#contact')}
             >
-              <FileText className="mr-2 w-5 h-5" />
-              Request a Quote
+              Contact Us
             </Button>
           </div>
 

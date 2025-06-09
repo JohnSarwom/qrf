@@ -3,13 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Shield, Bell, Users, Car, Cctv, ArrowRight, Monitor } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,6 +70,13 @@ const Services = () => {
       highlight: "Technology Focus"
     }
   ];
+
+  const scrollToContact = () => {
+    const element = document.querySelector('#contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section ref={sectionRef} id="services" className="py-20 bg-white">
@@ -144,17 +149,6 @@ const Services = () => {
                       </ul>
                     </div>
 
-                    {/* Get Quote Button */}
-                    <Button 
-                      className="w-full mb-4"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        navigate('/quote');
-                      }}
-                    >
-                      Get Quote for This Service
-                    </Button>
-
                     {/* Expand Button */}
                     <div className="flex items-center justify-between">
                       <div className="text-xs text-primary font-medium">
@@ -168,6 +162,18 @@ const Services = () => {
                 </Card>
               );
             })}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center mt-16">
+            <Button 
+              size="lg" 
+              className="px-8 py-4 text-lg"
+              onClick={scrollToContact}
+            >
+              Get In Touch
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </div>

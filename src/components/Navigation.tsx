@@ -15,7 +15,6 @@ const Navigation = () => {
     { label: 'Services', href: '#services' },
     { label: 'Solutions', href: '#solutions' },
     { label: 'Contact', href: '#contact' },
-    { label: 'Get Quote', href: '/quote', isRoute: true },
   ];
 
   useEffect(() => {
@@ -26,15 +25,11 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (href: string, isRoute?: boolean) => {
+  const handleNavClick = (href: string) => {
     setIsOpen(false);
-    if (isRoute) {
-      navigate(href);
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -60,10 +55,8 @@ const Navigation = () => {
               {navItems.map((item) => (
                 <button
                   key={item.label}
-                  onClick={() => handleNavClick(item.href, item.isRoute)}
-                  className={`text-foreground hover:text-primary transition-colors font-medium ${
-                    item.label === 'Get Quote' ? 'text-primary font-semibold' : ''
-                  }`}
+                  onClick={() => handleNavClick(item.href)}
+                  className="text-foreground hover:text-primary transition-colors font-medium"
                 >
                   {item.label}
                 </button>
@@ -89,10 +82,8 @@ const Navigation = () => {
                   {navItems.map((item) => (
                     <button
                       key={item.label}
-                      onClick={() => handleNavClick(item.href, item.isRoute)}
-                      className={`text-lg font-medium hover:text-primary transition-colors text-left ${
-                        item.label === 'Get Quote' ? 'text-primary font-semibold' : ''
-                      }`}
+                      onClick={() => handleNavClick(item.href)}
+                      className="text-lg font-medium hover:text-primary transition-colors text-left"
                     >
                       {item.label}
                     </button>
