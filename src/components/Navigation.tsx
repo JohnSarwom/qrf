@@ -61,9 +61,6 @@ const Navigation = () => {
                   {item.label}
                 </button>
               ))}
-              <Button className="gradient-blue text-white hover:opacity-90 transition-opacity">
-                Emergency Contact
-              </Button>
             </div>
 
             {/* Mobile Navigation */}
@@ -88,9 +85,6 @@ const Navigation = () => {
                       {item.label}
                     </button>
                   ))}
-                  <Button className="gradient-blue text-white w-full">
-                    Emergency Contact
-                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
