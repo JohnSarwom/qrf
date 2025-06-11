@@ -1,10 +1,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Users, Cctv, Award, MapPin, Phone } from 'lucide-react';
+import { Shield, Users, Cctv, Award, MapPin, Phone, Star, Zap } from 'lucide-react';
+import AnimatedCounter from './AnimatedCounter';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [parallaxOffset, setParallaxOffset] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -21,156 +23,198 @@ const About = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const scrolled = window.pageYOffset;
+      setParallaxOffset(scrolled * 0.1);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 gradient-mesh opacity-20" />
+      <div 
+        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-5"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
           {/* Enhanced Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+          <div className={`text-center mb-20 transition-all duration-1000 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 mb-4">
-              <Award className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Established Leader Since 2000+</span>
+            <div className="inline-flex items-center space-x-3 bg-primary/10 rounded-full px-6 py-3 mb-6 glass">
+              <Award className="w-5 h-5 text-primary animate-glow" />
+              <span className="text-sm font-bold text-primary uppercase tracking-wider">Established Leader Since 2000+</span>
+              <Star className="w-4 h-4 text-primary animate-pulse" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              About QRF
+            <h2 className="text-5xl md:text-7xl font-black text-primary mb-8 tracking-tight">
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">QRF</span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Quick Response Force (QRF) is Papua New Guinea's premier security and emergency response firm, 
+            <p className="text-2xl text-muted-foreground max-w-5xl mx-auto leading-relaxed font-light">
+              Quick Response Force (QRF) is Papua New Guinea's <span className="font-bold text-primary">premier security</span> and emergency response firm, 
               specializing in rapid threat mitigation, asset protection, and cutting-edge communication solutions.
             </p>
           </div>
 
-          {/* Enhanced Main Content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            <div className={`transition-all duration-1000 delay-300 ${
-              isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-20'
+          {/* Enhanced Main Content with Asymmetrical Layout */}
+          <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
+            <div className={`lg:col-span-7 transition-all duration-1000 delay-300 ${
+              isVisible ? 'animate-slide-in-left' : 'opacity-0 translate-x-20'
             }`}>
-              <h3 className="text-3xl font-bold text-primary mb-6">
-                Two Decades of Industry Leadership
-              </h3>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p className="text-lg">
-                  <strong className="text-primary">Including the design and construction of the G4S Control Room in Konedobu</strong>, 
-                  QRF has established itself as the undisputed leader in Security Management, Emergency Response, 
-                  and Two-way Radio Communications throughout Papua New Guinea.
-                </p>
-                <p>
-                  Our integrated approach combines cutting-edge technology, highly trained personnel, 
-                  and strategic partnerships with law enforcement to deliver swift, reliable, and 
-                  effective security and communication solutions for businesses, government agencies, and international organizations.
-                </p>
-                <p>
-                  <strong className="text-primary">Trusted by major corporations including Vodafone PNG</strong>, 
-                  we provide dedicated resources, vehicles, and specialized teams to ensure comprehensive 
-                  security coverage across Port Moresby and nationwide operations.
-                </p>
-              </div>
+              <div className="space-y-8">
+                <h3 className="text-4xl font-black text-primary mb-8 leading-tight">
+                  Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Industry Leadership</span>
+                </h3>
+                
+                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift">
+                    <p>
+                      <strong className="text-primary text-xl">Including the design and construction of the G4S Control Room in Konedobu</strong>, 
+                      QRF has established itself as the undisputed leader in Security Management, Emergency Response, 
+                      and Two-way Radio Communications throughout Papua New Guinea.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift">
+                    <p>
+                      Our integrated approach combines cutting-edge technology, highly trained personnel, 
+                      and strategic partnerships with law enforcement to deliver swift, reliable, and 
+                      effective security and communication solutions for businesses, government agencies, and international organizations.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 border border-primary/20">
+                    <p>
+                      <strong className="text-primary text-xl">Trusted by major corporations including Vodafone PNG</strong>, 
+                      we provide dedicated resources, vehicles, and specialized teams to ensure comprehensive 
+                      security coverage across Port Moresby and nationwide operations.
+                    </p>
+                  </div>
+                </div>
 
-              {/* Enhanced Service Icons */}
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                <div className="text-center group">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                    <Shield className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                {/* Enhanced Service Icons with Modern Design */}
+                <div className="grid grid-cols-3 gap-6 mt-12">
+                  <div className="text-center group cursor-pointer">
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
+                      <Shield className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-primary mb-1">Security Management</div>
+                    <div className="text-xs text-muted-foreground">Armed Protection & Asset Security</div>
                   </div>
-                  <div className="text-sm font-bold text-primary">Security Management</div>
-                  <div className="text-xs text-muted-foreground">Armed Protection & Asset Security</div>
-                </div>
-                <div className="text-center group">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                    <Users className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                  <div className="text-center group cursor-pointer">
+                    <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
+                      <Users className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-primary mb-1">Emergency Response</div>
+                    <div className="text-xs text-muted-foreground">24/7 Rapid Deployment Teams</div>
                   </div>
-                  <div className="text-sm font-bold text-primary">Emergency Response</div>
-                  <div className="text-xs text-muted-foreground">24/7 Rapid Deployment Teams</div>
-                </div>
-                <div className="text-center group">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
-                    <Cctv className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                  <div className="text-center group cursor-pointer">
+                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
+                      <Cctv className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-sm font-bold text-primary mb-1">Radio Communications</div>
+                    <div className="text-xs text-muted-foreground">Advanced Digital Systems</div>
                   </div>
-                  <div className="text-sm font-bold text-primary">Radio Communications</div>
-                  <div className="text-xs text-muted-foreground">Advanced Digital Systems</div>
                 </div>
               </div>
             </div>
 
-            <div className={`relative transition-all duration-1000 delay-500 ${
-              isVisible ? 'animate-fade-in' : 'opacity-0 scale-95'
+            <div className={`lg:col-span-5 transition-all duration-1000 delay-500 ${
+              isVisible ? 'animate-slide-in-right' : 'opacity-0 translate-x-20'
             }`}>
-              <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="QRF Security Operations Center"
-                  className="rounded-2xl object-cover w-full h-full hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              {/* Coverage Badge */}
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-lg border border-primary/20">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <div>
-                    <div className="text-sm font-bold text-primary">PNG Wide Coverage</div>
-                    <div className="text-xs text-muted-foreground">Port Moresby HQ</div>
+              <div className="relative">
+                <div className="aspect-[4/5] bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl overflow-hidden shadow-2xl hover-lift">
+                  <img 
+                    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="QRF Security Operations Center"
+                    className="rounded-3xl object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                
+                {/* Floating Stats Cards */}
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-2xl hover-lift glass">
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-6 h-6 text-primary" />
+                    <div>
+                      <div className="text-lg font-black text-primary">PNG Wide</div>
+                      <div className="text-sm text-muted-foreground">Coverage Area</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl hover-lift glass">
+                  <div className="flex items-center space-x-3">
+                    <Zap className="w-6 h-6 text-primary animate-pulse" />
+                    <div>
+                      <AnimatedCounter 
+                        end={24} 
+                        className="text-lg font-black text-primary" 
+                      />
+                      <div className="text-sm text-muted-foreground">Hour Response</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Key Attributes */}
+          {/* Enhanced Key Attributes with Modern Cards */}
           <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-700 ${
-            isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-20'
+            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
           }`}>
-            <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Shield className="w-10 h-10 text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-primary mb-4">Dedicated Resources</h4>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Dedicated resources, vehicles and drivers, specifically assigned to respond 
-                  and support major business activities in Port Moresby and nearby centers.
-                </p>
-                <div className="text-xs text-primary font-medium bg-primary/10 rounded-full px-3 py-1 inline-block">
-                  Vodafone PNG Partner
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-primary mb-4">Expert Personnel</h4>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Drivers and security personnel are carefully hand picked with extensive experience 
-                  in security response and advanced defensive & offensive driving skills.
-                </p>
-                <div className="text-xs text-primary font-medium bg-primary/10 rounded-full px-3 py-1 inline-block">
-                  Elite Training Standards
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 group">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-10 h-10 text-white" />
-                </div>
-                <h4 className="text-xl font-bold text-primary mb-4">Armed Protection</h4>
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  Armed Close Protection Officers (CPO) are carefully selected with proven track records 
-                  in cash and valuables in transit, VIP protection, and emergency response.
-                </p>
-                <div className="text-xs text-primary font-medium bg-primary/10 rounded-full px-3 py-1 inline-block">
-                  G4S Control Room Built
-                </div>
-              </CardContent>
-            </Card>
+            {[
+              {
+                icon: Shield,
+                title: "Dedicated Resources",
+                description: "Dedicated resources, vehicles and drivers, specifically assigned to respond and support major business activities in Port Moresby and nearby centers.",
+                badge: "Vodafone PNG Partner",
+                gradient: "from-primary to-accent"
+              },
+              {
+                icon: Users,
+                title: "Expert Personnel",
+                description: "Drivers and security personnel are carefully hand picked with extensive experience in security response and advanced defensive & offensive driving skills.",
+                badge: "Elite Training Standards",
+                gradient: "from-green-500 to-emerald-500"
+              },
+              {
+                icon: Phone,
+                title: "Armed Protection",
+                description: "Armed Close Protection Officers (CPO) are carefully selected with proven track records in cash and valuables in transit, VIP protection, and emergency response.",
+                badge: "G4S Control Room Built",
+                gradient: "from-blue-500 to-cyan-500"
+              }
+            ].map((attribute, index) => {
+              const IconComponent = attribute.icon;
+              return (
+                <Card key={index} className={`border-none shadow-2xl hover-lift hover-glow transition-all duration-500 group animate-stagger-${index + 1}`}>
+                  <CardContent className="p-8 text-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    <div className={`w-24 h-24 bg-gradient-to-br ${attribute.gradient} rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl relative z-10`}>
+                      <IconComponent className="w-12 h-12 text-white" />
+                    </div>
+                    
+                    <h4 className="text-2xl font-black text-primary mb-6 relative z-10">{attribute.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed mb-6 relative z-10">
+                      {attribute.description}
+                    </p>
+                    <div className="text-xs text-primary font-bold bg-primary/10 rounded-full px-4 py-2 inline-block relative z-10">
+                      {attribute.badge}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>
