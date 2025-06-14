@@ -1,8 +1,8 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck, Zap, Users, TrendingUp, Globe, Eye } from 'lucide-react';
-import SectionWrapper from './SectionWrapper'; // Assuming SectionWrapper is a valid component
 
 const services = [
   {
@@ -69,44 +69,38 @@ const services = [
 
 const Services = () => {
   return (
-    <SectionWrapper id="services" className="py-16 md:py-24 bg-white">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 animate-fade-in">Our Security Services</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          Comprehensive solutions to protect your organization from evolving cyber threats.
-        </p>
-      </div>
+    <section id="services" className="py-16 md:py-24 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Security Services</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive solutions to protect your organization from evolving cyber threats.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <Card 
-            key={index} 
-            className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in"
-            style={{ animationDelay: `${0.3 + index * 0.1}s` }}
-          >
-            <CardHeader className="p-6 bg-primary/5">
-              <div className="flex items-center space-x-4 mb-3">
-                {service.icon}
-                <CardTitle className="text-xl font-semibold text-primary">{service.title}</CardTitle>
-              </div>
-            </CardHeader>
-            <CardContent className="p-6 flex-grow flex flex-col">
-              <p className="text-muted-foreground mb-4 text-sm flex-grow">{service.description}</p>
-              {/* If you want to display features, you can add them here, e.g.:
-              <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
-                {service.features.slice(0, 2).map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-              */}
-              <Button variant="outline" className="mt-auto w-full hover:bg-primary hover:text-primary-foreground transition-colors">
-                Learn More
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card 
+              key={index} 
+              className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+            >
+              <CardHeader className="p-6 bg-primary/5">
+                <div className="flex items-center space-x-4 mb-3">
+                  {service.icon}
+                  <CardTitle className="text-xl font-semibold text-primary">{service.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="p-6 flex-grow flex flex-col">
+                <p className="text-muted-foreground mb-4 text-sm flex-grow">{service.description}</p>
+                <Button variant="outline" className="mt-auto w-full hover:bg-primary hover:text-primary-foreground transition-colors">
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 };
 
