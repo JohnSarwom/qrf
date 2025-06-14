@@ -2,68 +2,33 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck, Zap, Users, TrendingUp, Globe, Eye } from 'lucide-react';
+import { Shield, AlertTriangle, Car, Users, Wrench } from 'lucide-react';
 
 const services = [
   {
-    icon: <ShieldCheck className="w-10 h-10 text-primary" />,
-    title: 'Threat Detection & Response',
-    description: '24/7 monitoring and rapid response to security incidents using advanced AI and expert analysis.',
-    features: [
-      'Real-time threat intelligence',
-      'Automated incident correlation',
-      'Managed Detection and Response (MDR)',
-    ],
+    icon: <Shield className="w-10 h-10 text-primary" />,
+    title: 'Consultancy Services',
+    description: 'Expert advice on risk assessment, crisis management, and emergency preparedness.',
   },
   {
-    icon: <Zap className="w-10 h-10 text-primary" />,
-    title: 'Vulnerability Management',
-    description: 'Proactive identification and remediation of vulnerabilities across your digital assets.',
-    features: [
-      'Continuous scanning & assessment',
-      'Risk-based prioritization',
-      'Penetration testing services',
-    ],
+    icon: <AlertTriangle className="w-10 h-10 text-primary" />,
+    title: 'Emergency Response Planning',
+    description: 'Customized planning services to help clients prepare for security threats.',
+  },
+  {
+    icon: <Car className="w-10 h-10 text-primary" />,
+    title: 'Stolen Vehicle Recovery (SVR) Support',
+    description: 'Assistance with stolen vehicle recovery following a carjacking.',
   },
   {
     icon: <Users className="w-10 h-10 text-primary" />,
-    title: 'Security Awareness Training',
-    description: 'Empower your workforce to recognize and mitigate cyber threats through engaging training programs.',
-    features: [
-      'Customizable training modules',
-      'Phishing simulations',
-      'Performance tracking & reporting',
-    ],
+    title: 'Armed Escorts',
+    description: 'Provision of armed security escorts.',
   },
   {
-    icon: <TrendingUp className="w-10 h-10 text-primary" />,
-    title: 'Cybersecurity Consulting',
-    description: 'Strategic guidance to build and mature your cybersecurity posture in line with business objectives.',
-    features: [
-      'Security strategy development',
-      'Compliance & risk assessments (ISO 27001, GDPR)',
-      'Cloud security architecture',
-    ],
-  },
-  {
-    icon: <Globe className="w-10 h-10 text-primary" />,
-    title: 'Managed Firewall Services',
-    description: 'Comprehensive management of your firewall infrastructure for robust perimeter security.',
-    features: [
-      'Firewall deployment & configuration',
-      'Policy management & optimization',
-      'Performance monitoring & reporting',
-    ],
-  },
-  {
-    icon: <Eye className="w-10 h-10 text-primary" />,
-    title: 'Digital Forensics',
-    description: 'Investigate cyber incidents to understand impact, identify attackers, and support recovery efforts.',
-    features: [
-      'Incident data collection & analysis',
-      'Evidence preservation',
-      'Expert witness testimony',
-    ],
+    icon: <Wrench className="w-10 h-10 text-primary" />,
+    title: 'Logistical Support Services',
+    description: 'Provision of tools, technology, and manpower to handle large-scale emergencies.',
   },
 ];
 
@@ -74,7 +39,7 @@ const Services = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Security Services</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive solutions to protect your organization from evolving cyber threats.
+            Comprehensive solutions to protect your organization from evolving security threats.
           </p>
         </div>
 
