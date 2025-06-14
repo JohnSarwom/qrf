@@ -92,12 +92,14 @@ const Navigation = () => {
         </div>
       </nav>
 
-      {/* Emergency Floating Button */}
+      {/* Emergency Floating Button - REMOVED */}
+      {/* 
       <div className="fixed bottom-6 right-6 z-40">
         <Button className="w-14 h-14 rounded-full gradient-accent text-white shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse">
           <div className="text-xs font-bold">24/7</div>
         </Button>
       </div>
+      */}
     </>
   );
 };
