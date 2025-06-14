@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Users, Cctv, Award, MapPin, Phone, Star, Zap, Target, Eye, UserCheck, Handshake, Lightbulb, ShieldCheck, Plus, CheckCircle, Clock, Globe } from 'lucide-react';
@@ -240,65 +239,6 @@ const About = () => {
                   </Card>
                 );
               })}
-            </div>
-          </div>
-
-          {/* Expert Team Section */}
-          <div className={`transition-all duration-1000 delay-700 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
-          }`}>
-            <div className="text-center mb-12">
-              <h3 className="text-4xl font-black text-white mb-4">EXPERT TEAM</h3>
-              <p className="text-gray-300 max-w-3xl mx-auto">
-                Our leadership team brings decades of expertise in security management, emergency response, and strategic operations.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Heni Sarwom",
-                  role: "General Manager",
-                  specialization: "Security Operations & Strategic Planning",
-                  experience: "15+ Years",
-                  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                },
-                {
-                  name: "Security Director",
-                  role: "Operations Head",
-                  specialization: "Tactical Operations & Law Enforcement Coordination",
-                  experience: "12+ Years",
-                  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                },
-                {
-                  name: "Response Coordinator",
-                  role: "Emergency Response",
-                  specialization: "Crisis Management & Rapid Deployment",
-                  experience: "10+ Years",
-                  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                }
-              ].map((member, index) => (
-                <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group overflow-hidden">
-                  <CardContent className="p-0">
-                    <div className="aspect-square overflow-hidden">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h4 className="text-xl font-bold text-white mb-2">{member.name}</h4>
-                      <p className="text-cyan-400 font-semibold mb-2">{member.role}</p>
-                      <p className="text-gray-300 text-sm mb-3">{member.specialization}</p>
-                      <div className="flex items-center space-x-2 text-xs text-gray-400">
-                        <Star className="w-4 h-4 text-cyan-400" />
-                        <span>{member.experience}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
         </div>
