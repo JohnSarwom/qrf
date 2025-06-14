@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Shield, AlertTriangle, Car, Users, Wrench } from 'lucide-react';
+import { Shield, AlertTriangle, Car, Users, Wrench, MapPin, Settings, BookOpen, Handshake, GraduationCap, Lightbulb } from 'lucide-react';
 
 const services = [
   {
@@ -29,6 +29,36 @@ const services = [
     icon: <Wrench className="w-10 h-10 text-primary" />,
     title: 'Logistical Support Services',
     description: 'Provision of tools, technology, and manpower to handle large-scale emergencies.',
+  },
+  {
+    icon: <MapPin className="w-10 h-10 text-primary" />,
+    title: 'Vehicle Tracking Platform',
+    description: 'A system to track vehicles and monitor usage, aimed at preventing motor vehicle theft, abuse of vehicles, and delays in emergency response.',
+  },
+  {
+    icon: <Settings className="w-10 h-10 text-primary" />,
+    title: 'Preventative System Rules',
+    description: 'Custom rules and configurations within the tracking platform to proactively mitigate risks and enhance response effectiveness.',
+  },
+  {
+    icon: <BookOpen className="w-10 h-10 text-primary" />,
+    title: 'Emergency Preparedness Support',
+    description: 'We help clients prepare for emergencies with comprehensive plans, systems, and training programs.',
+  },
+  {
+    icon: <Handshake className="w-10 h-10 text-primary" />,
+    title: 'Strategic Partnerships with Law Enforcement',
+    description: 'Collaboration with police and security agencies to support operations and enhance response coordination.',
+  },
+  {
+    icon: <GraduationCap className="w-10 h-10 text-primary" />,
+    title: 'Trained Security Personnel',
+    description: 'Deployment of highly trained staff experienced in crisis response, emergency logistics, and escort services.',
+  },
+  {
+    icon: <Lightbulb className="w-10 h-10 text-primary" />,
+    title: 'Innovation in Security Solutions',
+    description: 'Emphasis on integrating technology and innovation into traditional security strategies, tailored to PNG\'s evolving threat landscape.',
   },
 ];
 
