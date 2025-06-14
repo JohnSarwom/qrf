@@ -1,12 +1,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Users, Cctv, Award, MapPin, Phone, Star, Zap, Target, Eye, UserCheck, Handshake, Lightbulb, ShieldCheck } from 'lucide-react';
+import { Shield, Users, Cctv, Award, MapPin, Phone, Star, Zap, Target, Eye, UserCheck, Handshake, Lightbulb, ShieldCheck, Plus, CheckCircle, Clock, Globe } from 'lucide-react';
 import AnimatedCounter from './AnimatedCounter';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [parallaxOffset, setParallaxOffset] = useState(0);
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -23,183 +23,219 @@ const About = () => {
       observer.observe(sectionRef.current);
     }
 
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      setParallaxOffset(scrolled * 0.1);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  const toggleCard = (cardId: string) => {
+    setExpandedCard(expandedCard === cardId ? null : cardId);
+  };
+
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 gradient-mesh opacity-20" />
-      <div 
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-5"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
-      />
+    <section ref={sectionRef} id="about" className="py-24 bg-slate-900 relative overflow-hidden">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, cyan 1px, transparent 1px),
+                           radial-gradient(circle at 75% 75%, teal 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }} />
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
-          {/* Enhanced Header */}
+          {/* Header Section */}
           <div className={`text-center mb-20 transition-all duration-1000 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="inline-flex items-center space-x-3 bg-primary/10 rounded-full px-6 py-3 mb-6 glass">
-              <Award className="w-5 h-5 text-primary animate-glow" />
-              <span className="text-sm font-bold text-primary uppercase tracking-wider">Established Leader Since 2000+</span>
-              <Star className="w-4 h-4 text-primary animate-pulse" />
+            <div className="inline-flex items-center space-x-3 bg-cyan-500/20 rounded-full px-6 py-3 mb-6 border border-cyan-500/30">
+              <ShieldCheck className="w-5 h-5 text-cyan-400" />
+              <span className="text-sm font-bold text-cyan-400 uppercase tracking-wider">SECURITY PROTECTION</span>
             </div>
-            <h2 className="text-5xl md:text-7xl font-black text-primary mb-8 tracking-tight">
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">QRF</span>
+            <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tight">
+              ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">US</span>
             </h2>
-            <p className="text-2xl text-muted-foreground max-w-5xl mx-auto leading-relaxed font-light">
-              Quick Response Force (QRF) specializes in <span className="font-bold text-primary">innovative and rapid security solutions</span> in Papua New Guinea, 
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Quick Response Force (QRF) specializes in innovative and rapid security solutions in Papua New Guinea, 
               delivering cutting-edge emergency response and asset protection services.
             </p>
           </div>
 
-          {/* Mission & Vision Statements */}
-          <div className={`grid md:grid-cols-2 gap-12 mb-20 transition-all duration-1000 delay-200 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
-          }`}>
-            <Card className="border-none shadow-2xl hover-lift hover-glow transition-all duration-500 bg-gradient-to-br from-primary/5 to-accent/5">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Target className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-3xl font-black text-primary mb-6">Our Mission</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  To enhance resilience and safety through quick response services, providing innovative security solutions 
-                  that protect our clients' assets and ensure rapid emergency response across Papua New Guinea.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-2xl hover-lift hover-glow transition-all duration-500 bg-gradient-to-br from-green-500/5 to-emerald-500/5">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Eye className="w-10 h-10 text-white" />
-                </div>
-                <h3 className="text-3xl font-black text-primary mb-6">Our Vision</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  To become a global standard-bearer in emergency response services, setting the benchmark for security 
-                  excellence and innovative solutions in the Asia-Pacific region and beyond.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Leadership Team */}
-          <div className={`mb-20 transition-all duration-1000 delay-300 ${
+          {/* Trusted Partners Section */}
+          <div className={`mb-20 transition-all duration-1000 delay-200 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
           }`}>
             <div className="text-center mb-12">
-              <h3 className="text-4xl font-black text-primary mb-4">Leadership Team</h3>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Our experienced leadership team brings decades of expertise in security management, 
-                emergency response, and strategic operations.
+              <h3 className="text-2xl font-bold text-gray-400 mb-8 uppercase tracking-wider">Trusted by Industry Leaders</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                {[
+                  { name: "Vodafone PNG", subtitle: "Telecommunications Partner" },
+                  { name: "G4S", subtitle: "Control Room Built" },
+                  { name: "Government PNG", subtitle: "Security Services" },
+                  { name: "Mining Sector", subtitle: "Asset Protection" }
+                ].map((partner, index) => (
+                  <div key={index} className="p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:bg-slate-800/80">
+                    <div className="text-white font-bold text-lg mb-1">{partner.name}</div>
+                    <div className="text-gray-400 text-sm">{partner.subtitle}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content with Image */}
+          <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+            {/* Left Side - Mission & Vision Cards */}
+            <div className={`space-y-6 transition-all duration-1000 delay-300 ${
+              isVisible ? 'animate-slide-in-left' : 'opacity-0 translate-x-20'
+            }`}>
+              {/* Mission Card */}
+              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+                <CardContent className="p-0">
+                  <div 
+                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-800/70 transition-all duration-300"
+                    onClick={() => toggleCard('mission')}
+                  >
+                    <h3 className="text-2xl font-bold text-white">OUR MISSION</h3>
+                    <Plus className={`w-6 h-6 text-cyan-400 transition-transform duration-300 ${
+                      expandedCard === 'mission' ? 'rotate-45' : ''
+                    }`} />
+                  </div>
+                  {expandedCard === 'mission' && (
+                    <div className="px-6 pb-6 text-gray-300 leading-relaxed animate-fade-in">
+                      To enhance resilience and safety through quick response services, providing innovative security solutions 
+                      that protect our clients' assets and ensure rapid emergency response across Papua New Guinea. We deliver 
+                      comprehensive security management, emergency response coordination, and advanced communication systems.
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Vision Card */}
+              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+                <CardContent className="p-0">
+                  <div 
+                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-800/70 transition-all duration-300"
+                    onClick={() => toggleCard('vision')}
+                  >
+                    <h3 className="text-2xl font-bold text-white">OUR VISION</h3>
+                    <Plus className={`w-6 h-6 text-cyan-400 transition-transform duration-300 ${
+                      expandedCard === 'vision' ? 'rotate-45' : ''
+                    }`} />
+                  </div>
+                  {expandedCard === 'vision' && (
+                    <div className="px-6 pb-6 text-gray-300 leading-relaxed animate-fade-in">
+                      To become a global standard-bearer in emergency response services, setting the benchmark for security 
+                      excellence and innovative solutions in the Asia-Pacific region and beyond. We envision a future where 
+                      advanced security technology and rapid response capabilities protect communities and businesses worldwide.
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* Experience Highlight */}
+              <div className="bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-xl p-6 border border-cyan-500/30">
+                <div className="flex items-center space-x-4 mb-4">
+                  <Award className="w-8 h-8 text-cyan-400" />
+                  <div>
+                    <div className="text-3xl font-black text-white">20+</div>
+                    <div className="text-gray-300 text-sm">Years of Excellence</div>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm">
+                  Two decades of proven leadership in Security Management, Emergency Response, and Two-way Radio Communications throughout Papua New Guinea.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Side - Professional Image */}
+            <div className={`transition-all duration-1000 delay-500 ${
+              isVisible ? 'animate-slide-in-right' : 'opacity-0 translate-x-20'
+            }`}>
+              <div className="relative">
+                <div className="aspect-[4/5] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700">
+                  <img 
+                    src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="QRF Security Professional"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                </div>
+                
+                {/* Floating Stats */}
+                <div className="absolute -bottom-6 -left-6 bg-slate-800 rounded-xl p-4 border border-slate-700 shadow-2xl">
+                  <div className="flex items-center space-x-3">
+                    <Globe className="w-6 h-6 text-cyan-400" />
+                    <div>
+                      <div className="text-lg font-bold text-white">PNG Wide</div>
+                      <div className="text-sm text-gray-400">Coverage</div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="absolute -top-6 -right-6 bg-slate-800 rounded-xl p-4 border border-slate-700 shadow-2xl">
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-cyan-400" />
+                    <div>
+                      <div className="text-lg font-bold text-white">24/7</div>
+                      <div className="text-sm text-gray-400">Response</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Why Choose Us Section */}
+          <div className={`mb-20 transition-all duration-1000 delay-600 ${
+            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
+          }`}>
+            <div className="text-center mb-12">
+              <h3 className="text-4xl font-black text-white mb-4">WHY CHOOSE US</h3>
+              <p className="text-gray-300 max-w-3xl mx-auto">
+                Our comprehensive security solutions combine cutting-edge technology, expert personnel, and proven methodologies.
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="border-none shadow-2xl hover-lift hover-glow transition-all duration-500 group">
-                <CardContent className="p-8 text-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500">
-                    <UserCheck className="w-16 h-16 text-white" />
-                  </div>
-                  <h4 className="text-2xl font-black text-primary mb-2">Heni Sarwom</h4>
-                  <p className="text-accent font-bold mb-4">General Manager</p>
-                  <p className="text-muted-foreground text-sm">
-                    Leading QRF with extensive experience in security operations, strategic planning, 
-                    and emergency response coordination across Papua New Guinea.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-none shadow-2xl hover-lift hover-glow transition-all duration-500 group">
-                <CardContent className="p-8 text-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500">
-                    <Shield className="w-16 h-16 text-white" />
-                  </div>
-                  <h4 className="text-2xl font-black text-primary mb-2">Security Director</h4>
-                  <p className="text-accent font-bold mb-4">Operations Head</p>
-                  <p className="text-muted-foreground text-sm">
-                    Overseeing all security operations, tactical planning, and coordination with law enforcement agencies 
-                    to ensure comprehensive protection services.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-none shadow-2xl hover-lift hover-glow transition-all duration-500 group">
-                <CardContent className="p-8 text-center">
-                  <div className="w-32 h-32 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500">
-                    <Users className="w-16 h-16 text-white" />
-                  </div>
-                  <h4 className="text-2xl font-black text-primary mb-2">Response Coordinator</h4>
-                  <p className="text-accent font-bold mb-4">Emergency Response</p>
-                  <p className="text-muted-foreground text-sm">
-                    Managing emergency response protocols, training programs, and ensuring rapid deployment 
-                    of resources during critical situations.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Core Values */}
-          <div className={`mb-20 transition-all duration-1000 delay-400 ${
-            isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
-          }`}>
-            <div className="text-center mb-12">
-              <h3 className="text-4xl font-black text-primary mb-4">Our Core Values</h3>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                These fundamental principles guide every aspect of our operations and client relationships.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-4 gap-6">
               {[
                 {
-                  icon: Lightbulb,
-                  title: "Innovation",
-                  description: "Continuously advancing our technology and methodologies to stay ahead of emerging threats.",
-                  gradient: "from-yellow-500 to-orange-500"
+                  icon: CheckCircle,
+                  title: "TRUSTED SECURITY",
+                  description: "Two decades of proven expertise in security management, emergency response, and asset protection across Papua New Guinea.",
+                  features: ["Armed Protection", "VIP Security", "Asset Protection"]
                 },
                 {
-                  icon: ShieldCheck,
-                  title: "Reliability",
-                  description: "Consistently delivering dependable security services that our clients can trust completely.",
-                  gradient: "from-primary to-accent"
-                },
-                {
-                  icon: Handshake,
-                  title: "Partnership",
-                  description: "Building strong collaborative relationships with clients, law enforcement, and community stakeholders.",
-                  gradient: "from-green-500 to-emerald-500"
+                  icon: Clock,
+                  title: "24/7 MONITORING",
+                  description: "Round-the-clock surveillance and rapid response capabilities with dedicated personnel and advanced communication systems.",
+                  features: ["Control Room Operations", "Real-time Monitoring", "Instant Response"]
                 },
                 {
                   icon: Shield,
-                  title: "Safety",
-                  description: "Prioritizing the protection and well-being of our clients, personnel, and communities we serve.",
-                  gradient: "from-blue-500 to-cyan-500"
+                  title: "FULL PROTECTION",
+                  description: "Comprehensive security solutions including emergency response, radio communications, and specialized tactical operations.",
+                  features: ["Emergency Response", "Radio Systems", "Tactical Operations"]
                 }
-              ].map((value, index) => {
-                const IconComponent = value.icon;
+              ].map((item, index) => {
+                const IconComponent = item.icon;
                 return (
-                  <Card key={index} className="border-none shadow-xl hover-lift hover-glow transition-all duration-500 group">
-                    <CardContent className="p-6 text-center">
-                      <div className={`w-16 h-16 bg-gradient-to-br ${value.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}>
+                  <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group">
+                    <CardContent className="p-8 text-center">
+                      <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
-                      <h4 className="text-xl font-black text-primary mb-3">{value.title}</h4>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+                      <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
+                      <p className="text-gray-300 mb-6 leading-relaxed">{item.description}</p>
+                      <div className="space-y-2">
+                        {item.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center justify-center space-x-2 text-sm text-gray-400">
+                            <CheckCircle className="w-4 h-4 text-cyan-400" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
                     </CardContent>
                   </Card>
                 );
@@ -207,156 +243,63 @@ const About = () => {
             </div>
           </div>
 
-          {/* Enhanced Main Content with Asymmetrical Layout */}
-          <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
-            <div className={`lg:col-span-7 transition-all duration-1000 delay-500 ${
-              isVisible ? 'animate-slide-in-left' : 'opacity-0 translate-x-20'
-            }`}>
-              <div className="space-y-8">
-                <h3 className="text-4xl font-black text-primary mb-8 leading-tight">
-                  Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Industry Leadership</span>
-                </h3>
-                
-                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift">
-                    <p>
-                      <strong className="text-primary text-xl">Including the design and construction of the G4S Control Room in Konedobu</strong>, 
-                      QRF has established itself as the undisputed leader in Security Management, Emergency Response, 
-                      and Two-way Radio Communications throughout Papua New Guinea.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift">
-                    <p>
-                      Our integrated approach combines cutting-edge technology, highly trained personnel, 
-                      and strategic partnerships with law enforcement to deliver swift, reliable, and 
-                      effective security and communication solutions for businesses, government agencies, and international organizations.
-                    </p>
-                  </div>
-                  
-                  <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl p-6 border border-primary/20">
-                    <p>
-                      <strong className="text-primary text-xl">Trusted by major corporations including Vodafone PNG</strong>, 
-                      we provide dedicated resources, vehicles, and specialized teams to ensure comprehensive 
-                      security coverage across Port Moresby and nationwide operations.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Enhanced Service Icons with Modern Design */}
-                <div className="grid grid-cols-3 gap-6 mt-12">
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
-                      <Shield className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="text-sm font-bold text-primary mb-1">Security Management</div>
-                    <div className="text-xs text-muted-foreground">Armed Protection & Asset Security</div>
-                  </div>
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
-                      <Users className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="text-sm font-bold text-primary mb-1">Emergency Response</div>
-                    <div className="text-xs text-muted-foreground">24/7 Rapid Deployment Teams</div>
-                  </div>
-                  <div className="text-center group cursor-pointer">
-                    <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl">
-                      <Cctv className="w-10 h-10 text-white" />
-                    </div>
-                    <div className="text-sm font-bold text-primary mb-1">Radio Communications</div>
-                    <div className="text-xs text-muted-foreground">Advanced Digital Systems</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`lg:col-span-5 transition-all duration-1000 delay-700 ${
-              isVisible ? 'animate-slide-in-right' : 'opacity-0 translate-x-20'
-            }`}>
-              <div className="relative">
-                <div className="aspect-[4/5] bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl overflow-hidden shadow-2xl hover-lift">
-                  <img 
-                    src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                    alt="QRF Security Operations Center"
-                    className="rounded-3xl object-cover w-full h-full hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                
-                {/* Floating Stats Cards */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-2xl hover-lift glass">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="w-6 h-6 text-primary" />
-                    <div>
-                      <div className="text-lg font-black text-primary">PNG Wide</div>
-                      <div className="text-sm text-muted-foreground">Coverage Area</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-6 shadow-2xl hover-lift glass">
-                  <div className="flex items-center space-x-3">
-                    <Zap className="w-6 h-6 text-primary animate-pulse" />
-                    <div>
-                      <AnimatedCounter 
-                        end={24} 
-                        className="text-lg font-black text-primary" 
-                      />
-                      <div className="text-sm text-muted-foreground">Hour Response</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced Key Attributes with Modern Cards */}
-          <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-900 ${
+          {/* Expert Team Section */}
+          <div className={`transition-all duration-1000 delay-700 ${
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
           }`}>
-            {[
-              {
-                icon: Shield,
-                title: "Dedicated Resources",
-                description: "Dedicated resources, vehicles and drivers, specifically assigned to respond and support major business activities in Port Moresby and nearby centers.",
-                badge: "Vodafone PNG Partner",
-                gradient: "from-primary to-accent"
-              },
-              {
-                icon: Users,
-                title: "Expert Personnel",
-                description: "Drivers and security personnel are carefully hand picked with extensive experience in security response and advanced defensive & offensive driving skills.",
-                badge: "Elite Training Standards",
-                gradient: "from-green-500 to-emerald-500"
-              },
-              {
-                icon: Phone,
-                title: "Armed Protection",
-                description: "Armed Close Protection Officers (CPO) are carefully selected with proven track records in cash and valuables in transit, VIP protection, and emergency response.",
-                badge: "G4S Control Room Built",
-                gradient: "from-blue-500 to-cyan-500"
-              }
-            ].map((attribute, index) => {
-              const IconComponent = attribute.icon;
-              return (
-                <Card key={index} className={`border-none shadow-2xl hover-lift hover-glow transition-all duration-500 group animate-stagger-${index + 1}`}>
-                  <CardContent className="p-8 text-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className={`w-24 h-24 bg-gradient-to-br ${attribute.gradient} rounded-full flex items-center justify-center mx-auto mb-8 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-xl relative z-10`}>
-                      <IconComponent className="w-12 h-12 text-white" />
+            <div className="text-center mb-12">
+              <h3 className="text-4xl font-black text-white mb-4">EXPERT TEAM</h3>
+              <p className="text-gray-300 max-w-3xl mx-auto">
+                Our leadership team brings decades of expertise in security management, emergency response, and strategic operations.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Heni Sarwom",
+                  role: "General Manager",
+                  specialization: "Security Operations & Strategic Planning",
+                  experience: "15+ Years",
+                  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                  name: "Security Director",
+                  role: "Operations Head",
+                  specialization: "Tactical Operations & Law Enforcement Coordination",
+                  experience: "12+ Years",
+                  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                },
+                {
+                  name: "Response Coordinator",
+                  role: "Emergency Response",
+                  specialization: "Crisis Management & Rapid Deployment",
+                  experience: "10+ Years",
+                  image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                }
+              ].map((member, index) => (
+                <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={member.image} 
+                        alt={member.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
                     </div>
-                    
-                    <h4 className="text-2xl font-black text-primary mb-6 relative z-10">{attribute.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed mb-6 relative z-10">
-                      {attribute.description}
-                    </p>
-                    <div className="text-xs text-primary font-bold bg-primary/10 rounded-full px-4 py-2 inline-block relative z-10">
-                      {attribute.badge}
+                    <div className="p-6">
+                      <h4 className="text-xl font-bold text-white mb-2">{member.name}</h4>
+                      <p className="text-cyan-400 font-semibold mb-2">{member.role}</p>
+                      <p className="text-gray-300 text-sm mb-3">{member.specialization}</p>
+                      <div className="flex items-center space-x-2 text-xs text-gray-400">
+                        <Star className="w-4 h-4 text-cyan-400" />
+                        <span>{member.experience}</span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </div>
