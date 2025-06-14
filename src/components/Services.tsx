@@ -54,7 +54,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-slate-900 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Tech Grid Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -70,8 +70,8 @@ const Services = () => {
             <Shield className="w-5 h-5 text-cyan-400" />
             <span className="text-sm font-bold text-cyan-400 uppercase tracking-wider">SECURITY SERVICES</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Security Services</h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4">Our Security Services</h2>
+          <p className="text-lg text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
             Comprehensive solutions to protect your organization from evolving security threats.
           </p>
         </div>
@@ -80,19 +80,19 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="flex flex-col overflow-hidden bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:bg-slate-800/80 group"
+              className="flex flex-col overflow-hidden bg-slate-50/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/80 group"
             >
-              <CardHeader className="p-6 bg-slate-800/50">
+              <CardHeader className="p-6 bg-slate-100/50 dark:bg-slate-800/50">
                 <div className="flex items-center space-x-4 mb-3">
                   <div className="group-hover:scale-110 transition-transform duration-300">
                     {service.icon}
                   </div>
-                  <CardTitle className="text-xl font-semibold text-white">{service.title}</CardTitle>
+                  <CardTitle className="text-xl font-semibold text-slate-900 dark:text-white">{service.title}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="p-6 flex-grow flex flex-col">
-                <p className="text-gray-300 mb-4 text-sm flex-grow">{service.description}</p>
-                <Button variant="outline" className="mt-auto w-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500 hover:text-slate-900 transition-colors">
+                <p className="text-slate-600 dark:text-gray-300 mb-4 text-sm flex-grow">{service.description}</p>
+                <Button variant="outline" className="mt-auto w-full border-cyan-500/50 text-cyan-600 dark:text-cyan-400 hover:bg-cyan-500 hover:text-white dark:hover:text-slate-900 transition-colors">
                   Learn More
                 </Button>
               </CardContent>

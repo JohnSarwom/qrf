@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,8 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 border-b border-slate-700 transition-all duration-300 ${
-        isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-slate-900/95 backdrop-blur-sm'
+      <nav className={`fixed top-0 w-full z-50 border-b border-slate-200 dark:border-slate-700 transition-all duration-300 ${
+        isScrolled ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm'
       }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -46,7 +47,7 @@ const Navigation = () => {
                 <span className="text-slate-900 font-bold text-lg">QRF</span>
               </div>
               <div className="hidden sm:block">
-                <span className="text-xl font-bold text-white">Quick Response Force</span>
+                <span className="text-xl font-bold text-slate-900 dark:text-white">Quick Response Force</span>
               </div>
             </div>
 
@@ -56,38 +57,42 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-gray-300 hover:text-cyan-400 transition-colors font-medium"
+                  className="text-slate-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors font-medium"
                 >
                   {item.label}
                 </button>
               ))}
+              <ThemeToggle />
             </div>
 
             {/* Mobile Navigation */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button variant="ghost" size="sm" className="text-gray-300 hover:text-cyan-400">
-                  <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                    <div className="w-full h-0.5 bg-gray-300"></div>
-                    <div className="w-full h-0.5 bg-gray-300"></div>
-                    <div className="w-full h-0.5 bg-gray-300"></div>
+            <div className="flex items-center space-x-2 md:hidden">
+              <ThemeToggle />
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="sm" className="text-slate-600 dark:text-gray-300 hover:text-cyan-600 dark:hover:text-cyan-400">
+                    <div className="w-6 h-6 flex flex-col justify-center space-y-1">
+                      <div className="w-full h-0.5 bg-slate-600 dark:bg-gray-300"></div>
+                      <div className="w-full h-0.5 bg-slate-600 dark:bg-gray-300"></div>
+                      <div className="w-full h-0.5 bg-slate-600 dark:bg-gray-300"></div>
+                    </div>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+                  <div className="flex flex-col space-y-6 mt-6">
+                    {navItems.map((item) => (
+                      <button
+                        key={item.label}
+                        onClick={() => handleNavClick(item.href)}
+                        className="text-lg font-medium hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors text-left text-slate-700 dark:text-gray-300"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
                   </div>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-slate-900 border-slate-700">
-                <div className="flex flex-col space-y-6 mt-6">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.label}
-                      onClick={() => handleNavClick(item.href)}
-                      className="text-lg font-medium hover:text-cyan-400 transition-colors text-left text-gray-300"
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
       </nav>

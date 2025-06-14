@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Shield, Users, Cctv, Award, MapPin, Phone, Star, Zap, Target, Eye, UserCheck, Handshake, Lightbulb, ShieldCheck, Plus, CheckCircle, Clock, Globe } from 'lucide-react';
@@ -32,9 +33,9 @@ const About = () => {
   };
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-slate-900 relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
       {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 dark:opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, cyan 1px, transparent 1px),
                            radial-gradient(circle at 75% 75%, teal 1px, transparent 1px)`,
@@ -52,10 +53,10 @@ const About = () => {
               <ShieldCheck className="w-5 h-5 text-cyan-400" />
               <span className="text-sm font-bold text-cyan-400 uppercase tracking-wider">SECURITY PROTECTION</span>
             </div>
-            <h2 className="text-6xl md:text-8xl font-black text-white mb-8 tracking-tight">
+            <h2 className="text-6xl md:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tight">
               ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">US</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Quick Response Force (QRF) specializes in innovative and rapid security solutions in Papua New Guinea, 
               delivering cutting-edge emergency response and asset protection services.
             </p>
@@ -66,7 +67,7 @@ const About = () => {
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
           }`}>
             <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-gray-400 mb-8 uppercase tracking-wider">Trusted by Industry Leaders</h3>
+              <h3 className="text-2xl font-bold text-slate-500 dark:text-gray-400 mb-8 uppercase tracking-wider">Trusted by Industry Leaders</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
                 {[
                   { name: "Vodafone PNG", subtitle: "Telecommunications Partner" },
@@ -74,9 +75,9 @@ const About = () => {
                   { name: "Government PNG", subtitle: "Security Services" },
                   { name: "Mining Sector", subtitle: "Asset Protection" }
                 ].map((partner, index) => (
-                  <div key={index} className="p-6 bg-slate-800/50 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:bg-slate-800/80">
-                    <div className="text-white font-bold text-lg mb-1">{partner.name}</div>
-                    <div className="text-gray-400 text-sm">{partner.subtitle}</div>
+                  <div key={index} className="p-6 bg-white/50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:bg-white/80 dark:hover:bg-slate-800/80">
+                    <div className="text-slate-900 dark:text-white font-bold text-lg mb-1">{partner.name}</div>
+                    <div className="text-slate-500 dark:text-gray-400 text-sm">{partner.subtitle}</div>
                   </div>
                 ))}
               </div>
@@ -90,19 +91,19 @@ const About = () => {
               isVisible ? 'animate-slide-in-left' : 'opacity-0 translate-x-20'
             }`}>
               {/* Mission Card */}
-              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+              <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 overflow-hidden">
                 <CardContent className="p-0">
                   <div 
-                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-800/70 transition-all duration-300"
+                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-all duration-300"
                     onClick={() => toggleCard('mission')}
                   >
-                    <h3 className="text-2xl font-bold text-white">OUR MISSION</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white">OUR MISSION</h3>
                     <Plus className={`w-6 h-6 text-cyan-400 transition-transform duration-300 ${
                       expandedCard === 'mission' ? 'rotate-45' : ''
                     }`} />
                   </div>
                   {expandedCard === 'mission' && (
-                    <div className="px-6 pb-6 text-gray-300 leading-relaxed animate-fade-in">
+                    <div className="px-6 pb-6 text-slate-600 dark:text-gray-300 leading-relaxed animate-fade-in">
                       To enhance resilience and safety through quick response services, providing innovative security solutions 
                       that protect our clients' assets and ensure rapid emergency response across Papua New Guinea. We deliver 
                       comprehensive security management, emergency response coordination, and advanced communication systems.
@@ -112,19 +113,19 @@ const About = () => {
               </Card>
 
               {/* Vision Card */}
-              <Card className="bg-slate-800/50 border-slate-700 overflow-hidden">
+              <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 overflow-hidden">
                 <CardContent className="p-0">
                   <div 
-                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-800/70 transition-all duration-300"
+                    className="p-6 cursor-pointer flex items-center justify-between hover:bg-slate-100/70 dark:hover:bg-slate-800/70 transition-all duration-300"
                     onClick={() => toggleCard('vision')}
                   >
-                    <h3 className="text-2xl font-bold text-white">OUR VISION</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white">OUR VISION</h3>
                     <Plus className={`w-6 h-6 text-cyan-400 transition-transform duration-300 ${
                       expandedCard === 'vision' ? 'rotate-45' : ''
                     }`} />
                   </div>
                   {expandedCard === 'vision' && (
-                    <div className="px-6 pb-6 text-gray-300 leading-relaxed animate-fade-in">
+                    <div className="px-6 pb-6 text-slate-600 dark:text-gray-300 leading-relaxed animate-fade-in">
                       To become a global standard-bearer in emergency response services, setting the benchmark for security 
                       excellence and innovative solutions in the Asia-Pacific region and beyond. We envision a future where 
                       advanced security technology and rapid response capabilities protect communities and businesses worldwide.
@@ -138,11 +139,11 @@ const About = () => {
                 <div className="flex items-center space-x-4 mb-4">
                   <Award className="w-8 h-8 text-cyan-400" />
                   <div>
-                    <div className="text-3xl font-black text-white">20+</div>
-                    <div className="text-gray-300 text-sm">Years of Excellence</div>
+                    <div className="text-3xl font-black text-slate-900 dark:text-white">20+</div>
+                    <div className="text-slate-600 dark:text-gray-300 text-sm">Years of Excellence</div>
                   </div>
                 </div>
-                <p className="text-gray-300 text-sm">
+                <p className="text-slate-600 dark:text-gray-300 text-sm">
                   Two decades of proven leadership in Security Management, Emergency Response, and Two-way Radio Communications throughout Papua New Guinea.
                 </p>
               </div>
@@ -153,32 +154,32 @@ const About = () => {
               isVisible ? 'animate-slide-in-right' : 'opacity-0 translate-x-20'
             }`}>
               <div className="relative">
-                <div className="aspect-[4/5] bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-slate-700">
+                <div className="aspect-[4/5] bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
                   <img 
                     src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                     alt="QRF Security Professional"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-200/80 dark:from-slate-900/80 via-transparent to-transparent" />
                 </div>
                 
                 {/* Floating Stats */}
-                <div className="absolute -bottom-6 -left-6 bg-slate-800 rounded-xl p-4 border border-slate-700 shadow-2xl">
+                <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-2xl">
                   <div className="flex items-center space-x-3">
                     <Globe className="w-6 h-6 text-cyan-400" />
                     <div>
-                      <div className="text-lg font-bold text-white">PNG Wide</div>
-                      <div className="text-sm text-gray-400">Coverage</div>
+                      <div className="text-lg font-bold text-slate-900 dark:text-white">PNG Wide</div>
+                      <div className="text-sm text-slate-500 dark:text-gray-400">Coverage</div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="absolute -top-6 -right-6 bg-slate-800 rounded-xl p-4 border border-slate-700 shadow-2xl">
+                <div className="absolute -top-6 -right-6 bg-white dark:bg-slate-800 rounded-xl p-4 border border-slate-200 dark:border-slate-700 shadow-2xl">
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-cyan-400" />
                     <div>
-                      <div className="text-lg font-bold text-white">24/7</div>
-                      <div className="text-sm text-gray-400">Response</div>
+                      <div className="text-lg font-bold text-slate-900 dark:text-white">24/7</div>
+                      <div className="text-sm text-slate-500 dark:text-gray-400">Response</div>
                     </div>
                   </div>
                 </div>
@@ -191,8 +192,8 @@ const About = () => {
             isVisible ? 'animate-fade-in' : 'opacity-0 translate-y-20'
           }`}>
             <div className="text-center mb-12">
-              <h3 className="text-4xl font-black text-white mb-4">WHY CHOOSE US</h3>
-              <p className="text-gray-300 max-w-3xl mx-auto">
+              <h3 className="text-4xl font-black text-slate-900 dark:text-white mb-4">WHY CHOOSE US</h3>
+              <p className="text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Our comprehensive security solutions combine cutting-edge technology, expert personnel, and proven methodologies.
               </p>
             </div>
@@ -220,16 +221,16 @@ const About = () => {
               ].map((item, index) => {
                 const IconComponent = item.icon;
                 return (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group">
+                  <Card key={index} className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700 hover:border-cyan-500/50 transition-all duration-300 group">
                     <CardContent className="p-8 text-center">
                       <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                         <IconComponent className="w-8 h-8 text-white" />
                       </div>
-                      <h4 className="text-xl font-bold text-white mb-4">{item.title}</h4>
-                      <p className="text-gray-300 mb-6 leading-relaxed">{item.description}</p>
+                      <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{item.title}</h4>
+                      <p className="text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">{item.description}</p>
                       <div className="space-y-2">
                         {item.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center justify-center space-x-2 text-sm text-gray-400">
+                          <div key={idx} className="flex items-center justify-center space-x-2 text-sm text-slate-500 dark:text-gray-400">
                             <CheckCircle className="w-4 h-4 text-cyan-400" />
                             <span>{feature}</span>
                           </div>
