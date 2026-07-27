@@ -75,7 +75,7 @@ const Index = () => {
   return (
     <main className="qrf-page">
       <PageMeta
-        title="QRF | Communications, Connectivity and Security Solutions PNG"
+        title="QRF Communications | Connectivity & Security Solutions PNG"
         description="QRF provides communications, connectivity, security and network infrastructure solutions for organisations operating across Papua New Guinea."
       />
 

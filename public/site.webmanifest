@@ -1,6 +1,10 @@
 {
+  "id": "/",
   "name": "QRF Communications",
   "short_name": "QRF",
+  "description": "Communications, connectivity, security and network infrastructure solutions across Papua New Guinea.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

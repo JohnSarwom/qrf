@@ -3,21 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QRF | Communications, Connectivity and Security Solutions PNG</title>
+    <title>QRF Communications | Connectivity &amp; Security Solutions PNG</title>
     <meta name="description" content="QRF provides communications, connectivity, security and network infrastructure solutions for organisations operating across Papua New Guinea." />
-    <meta name="author" content="QRF" />
+    <meta name="author" content="QRF Communications" />
+    <meta name="application-name" content="QRF Communications" />
+    <meta name="theme-color" content="#071927" />
     <link rel="canonical" href="https://www.qrfpng.com/" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
-    <meta property="og:title" content="QRF | Mission-Critical Communications. Connected PNG." />
+    <meta property="og:title" content="QRF Communications | Connectivity &amp; Security Solutions PNG" />
     <meta property="og:description" content="Communications, connectivity, security and network infrastructure solutions for organisations operating across Papua New Guinea." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.qrfpng.com/" />
     <meta property="og:site_name" content="QRF Communications" />
+    <meta property="og:locale" content="en_PG" />
     <meta property="og:image" content="https://www.qrfpng.com/og-v2.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -27,24 +32,53 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "QRF Communications",
-        "legalName": "QRF Limited",
-        "url": "https://www.qrfpng.com/",
-        "email": "info@qrfpng.com",
-        "telephone": "+675 8244 5259",
-        "address": {
-          "@type": "PostalAddress",
-          "postOfficeBoxNumber": "619",
-          "addressLocality": "Port Moresby",
-          "addressRegion": "National Capital District",
-          "postalCode": "125",
-          "addressCountry": "PG"
-        },
-        "areaServed": {
-          "@type": "Country",
-          "name": "Papua New Guinea"
-        }
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.qrfpng.com/#organization",
+            "name": "QRF Communications",
+            "alternateName": ["QRF", "QRF PNG"],
+            "legalName": "QRF Limited",
+            "url": "https://www.qrfpng.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.qrfpng.com/android-chrome-512x512.png",
+              "width": 512,
+              "height": 512
+            },
+            "image": "https://www.qrfpng.com/og-v2.jpg",
+            "email": "info@qrfpng.com",
+            "telephone": "+675 8244 5259",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Kungu Haus, Section 29, Lot 08, Spondias Street",
+              "addressLocality": "Port Moresby",
+              "addressRegion": "National Capital District",
+              "postalCode": "111",
+              "addressCountry": "PG"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -9.461221,
+              "longitude": 147.176963
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Papua New Guinea"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.qrfpng.com/#website",
+            "url": "https://www.qrfpng.com/",
+            "name": "QRF Communications",
+            "alternateName": "QRF PNG",
+            "publisher": {
+              "@id": "https://www.qrfpng.com/#organization"
+            },
+            "inLanguage": "en-PG"
+          }
+        ]
       }
     </script>
   </head>
