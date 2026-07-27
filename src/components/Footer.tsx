@@ -1,59 +1,76 @@
-
 import React from 'react';
+import { Headset, MapPin, Radio, ShieldCheck } from 'lucide-react';
+
+const services = [
+  'Emergency Response Planning',
+  'Vehicle Recovery Support',
+  'Armed Escorts & Protection',
+  'Command Center Solutions',
+  'Radio Communications',
+  'Security Consultancy',
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-gray-300 py-12 border-t border-slate-200 dark:border-slate-800">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Company Info */}
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-teal-400 rounded-lg flex items-center justify-center">
-                  <span className="text-slate-900 font-bold text-lg">QRF</span>
-                </div>
-                <span className="text-xl font-bold text-slate-900 dark:text-white">Quick Response Force</span>
+    <footer className="border-t border-slate-200 bg-white px-4 py-12 text-slate-600 md:px-6">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 md:grid-cols-[1.15fr_0.95fr_0.9fr]">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+                <img
+                  src="/favicon-64x64.png"
+                  alt="QRF Communications"
+                  className="h-10 w-10 object-contain"
+                />
               </div>
-              <p className="text-slate-500 dark:text-gray-400 leading-relaxed mb-4">
-                Your leader in innovative security solutions, safeguarding lives and 
-                assets in Papua New Guinea with over two decades of expertise.
-              </p>
-              <p className="text-slate-400 dark:text-gray-500 text-sm">
-                © 2025 Quick Response Force. All rights reserved.
-              </p>
+              <div>
+                <span className="block text-xl font-black text-slate-950">QRF Communications</span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-cyan-700">Security Response</span>
+              </div>
             </div>
+            <p className="max-w-md text-sm leading-7 text-slate-500">
+              Your leader in innovative security, emergency response, and radio communications solutions across Papua New Guinea.
+            </p>
+            <p className="mt-5 text-sm font-semibold text-slate-400">
+              Copyright 2026 QRF Communications. All rights reserved.
+            </p>
+          </div>
 
-            {/* Services */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Our Services</h4>
-              <ul className="space-y-2 text-slate-500 dark:text-gray-400">
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Emergency Response Planning</li>
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Vehicle Recovery Support</li>
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Armed Escorts & Protection</li>
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Command Center Solutions</li>
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Radio Communications</li>
-                <li className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer">Security Consultancy</li>
-              </ul>
-            </div>
+          <div>
+            <h4 className="mb-4 flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-slate-950">
+              <ShieldCheck className="h-4 w-4 text-cyan-700" />
+              Services
+            </h4>
+            <ul className="grid gap-2 text-sm font-semibold text-slate-500">
+              {services.map((service) => (
+                <li key={service} className="transition-colors hover:text-cyan-700">
+                  {service}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Contact */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-slate-900 dark:text-white">Contact Information</h4>
-              <div className="space-y-3 text-slate-500 dark:text-gray-400">
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Service Area</p>
-                  <p className="text-sm">Papua New Guinea</p>
-                  <p className="text-sm">Port Moresby & Surrounding Areas</p>
+          <div>
+            <h4 className="mb-4 flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-slate-950">
+              <Headset className="h-4 w-4 text-cyan-700" />
+              Contact
+            </h4>
+            <div className="grid gap-4 text-sm text-slate-500">
+              <div className="rounded-lg bg-slate-50 p-4 ring-1 ring-slate-200">
+                <div className="mb-2 flex items-center gap-2 font-black text-slate-950">
+                  <MapPin className="h-4 w-4 text-cyan-700" />
+                  Service Area
                 </div>
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Emergency Response</p>
-                  <p className="text-sm text-cyan-600 dark:text-cyan-400">24/7 Available</p>
+                <p>Papua New Guinea</p>
+                <p>Port Moresby and surrounding areas</p>
+              </div>
+              <div className="rounded-lg bg-slate-950 p-4 text-slate-300">
+                <div className="mb-2 flex items-center gap-2 font-black text-white">
+                  <Radio className="h-4 w-4 text-cyan-300" />
+                  Specialties
                 </div>
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Specialties</p>
-                  <p className="text-sm">Security Management • Emergency Response • Radio Communications</p>
-                </div>
+                <p>Security management, emergency response, and radio communications.</p>
               </div>
             </div>
           </div>

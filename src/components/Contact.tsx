@@ -1,138 +1,206 @@
-
-import React from 'react';
+import React, { useState } from 'react';
+import { ArrowRight, CheckCircle2, Headset, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Shield, Phone } from 'lucide-react';
+
+const contactPoints = [
+  'Rapid response planning for sites and personnel',
+  'Radio communications and dispatch support',
+  'Command center and monitoring capability',
+];
+
+const serviceAreas = ['Port Moresby Metropolitan Area', 'Central Province', 'Nationwide coverage available'];
+
+const requirementTypes = [
+  'Emergency response planning',
+  'Asset protection or escort',
+  'Vehicle recovery support',
+  'Command center support',
+  'Radio communications',
+  'Security consultancy',
+];
+
+const urgencyOptions = ['Immediate', 'Within 24 hours', 'This week', 'Planning ahead'];
 
 const Contact = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
-    <section id="contact" className="py-20 bg-slate-900 relative overflow-hidden">
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, cyan 1px, transparent 1px),
-                           radial-gradient(circle at 75% 75%, teal 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-3 bg-cyan-500/20 rounded-full px-6 py-3 mb-6 border border-cyan-500/30">
-              <Shield className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm font-bold text-cyan-400 uppercase tracking-wider">CONTACT US</span>
+    <section id="contact" className="relative overflow-hidden bg-[#f5f8fb] px-4 py-16 md:px-6 md:py-24">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-700 shadow-sm">
+              <Headset className="h-4 w-4" />
+              Contact QRF
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Get In Touch
+            <h2 className="text-3xl font-black leading-tight text-slate-950 sm:text-4xl md:text-5xl">
+              Plan a security response around your operation.
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Ready to secure your operations? Contact our team for a comprehensive 
-              security assessment and customized solution.
-            </p>
+          </div>
+          <p className="max-w-2xl text-base leading-8 text-slate-600 lg:justify-self-end">
+            Share the site, personnel, movement, or communications challenge you need covered. QRF can help scope a practical response plan for PNG operating conditions.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="rounded-xl bg-white p-5 shadow-xl shadow-slate-200/70 ring-1 ring-slate-200/80 md:p-7">
+            <div className="mb-7 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-700">Security assessment</p>
+                <h3 className="mt-2 text-2xl font-black text-slate-950">Send a message</h3>
+              </div>
+              <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-cyan-300">
+                <Mail className="h-6 w-6" />
+              </span>
+            </div>
+
+            <form className="grid gap-5" onSubmit={handleSubmit}>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="first-name" className="mb-2 block text-sm font-bold text-slate-700">First name <span className="text-cyan-700">*</span></label>
+                  <Input id="first-name" name="firstName" required placeholder="John" className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+                <div>
+                  <label htmlFor="last-name" className="mb-2 block text-sm font-bold text-slate-700">Last name <span className="text-cyan-700">*</span></label>
+                  <Input id="last-name" name="lastName" required placeholder="Doe" className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="email" className="mb-2 block text-sm font-bold text-slate-700">Email <span className="text-cyan-700">*</span></label>
+                  <Input id="email" name="email" type="email" required placeholder="john.doe@company.com" className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="mb-2 block text-sm font-bold text-slate-700">Phone <span className="text-cyan-700">*</span></label>
+                  <Input id="phone" name="phone" required placeholder="+675 ..." className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="company" className="mb-2 block text-sm font-bold text-slate-700">Company or organization</label>
+                  <Input id="company" name="company" placeholder="Your company" className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+                <div>
+                  <label htmlFor="location" className="mb-2 block text-sm font-bold text-slate-700">Operating area</label>
+                  <Input id="location" name="location" placeholder="Port Moresby, Central Province, remote site..." className="h-12 rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400" />
+                </div>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label htmlFor="requirement-type" className="mb-2 block text-sm font-bold text-slate-700">Requirement type <span className="text-cyan-700">*</span></label>
+                  <select
+                    id="requirement-type"
+                    name="requirementType"
+                    required
+                    defaultValue=""
+                    className="h-12 w-full rounded-md border border-slate-200 bg-slate-50 px-3 text-sm font-semibold text-slate-950 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <option value="" disabled>Select requirement</option>
+                    {requirementTypes.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="urgency" className="mb-2 block text-sm font-bold text-slate-700">Urgency <span className="text-cyan-700">*</span></label>
+                  <select
+                    id="urgency"
+                    name="urgency"
+                    required
+                    defaultValue=""
+                    className="h-12 w-full rounded-md border border-slate-200 bg-slate-50 px-3 text-sm font-semibold text-slate-950 outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <option value="" disabled>Select urgency</option>
+                    {urgencyOptions.map((option) => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="message" className="mb-2 block text-sm font-bold text-slate-700">Operational details <span className="text-cyan-700">*</span></label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder="Tell us about the operation, location, timeframe, and response needs."
+                  className="min-h-[138px] rounded-md border-slate-200 bg-slate-50 text-slate-950 placeholder:text-slate-400"
+                />
+              </div>
+              <p className="text-xs font-semibold leading-5 text-slate-500">
+                Sensitive route, personnel, asset, and site details should be shared only as needed. QRF will use this enquiry to triage the right follow-up conversation.
+              </p>
+              {submitted && (
+                <div className="rounded-lg border border-cyan-200 bg-cyan-50 p-4 text-sm font-bold text-cyan-900" role="status">
+                  Enquiry captured for triage. Connect this form to your preferred email, CRM, or secure intake workflow before production launch.
+                </div>
+              )}
+              <Button type="submit" className="h-12 rounded-md bg-slate-950 font-black text-white hover:bg-cyan-500 hover:text-slate-950">
+                Send Message
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </form>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="border-none bg-slate-800/50 border-slate-700">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Send us a Message</h3>
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        First Name
-                      </label>
-                      <Input placeholder="John" className="bg-slate-700 border-slate-600 text-white placeholder-gray-400" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Last Name
-                      </label>
-                      <Input placeholder="Doe" className="bg-slate-700 border-slate-600 text-white placeholder-gray-400" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Email
-                    </label>
-                    <Input type="email" placeholder="john.doe@company.com" className="bg-slate-700 border-slate-600 text-white placeholder-gray-400" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Company
-                    </label>
-                    <Input placeholder="Your Company Name" className="bg-slate-700 border-slate-600 text-white placeholder-gray-400" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Service Interest
-                    </label>
-                    <Input placeholder="e.g., Security Management, Emergency Response" className="bg-slate-700 border-slate-600 text-white placeholder-gray-400" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Message
-                    </label>
-                    <Textarea 
-                      placeholder="Tell us about your security requirements..."
-                      className="min-h-[120px] bg-slate-700 border-slate-600 text-white placeholder-gray-400"
-                    />
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-600 hover:to-teal-600 text-white font-semibold py-3">
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <Card className="border-none bg-slate-800/50 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mr-4">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white">Our Location</h3>
-                  </div>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
-                    Serving Papua New Guinea with headquarters in Port Moresby and coverage 
-                    extending to nearby centers across the region.
+          <div className="grid gap-6">
+            <div className="rounded-xl bg-slate-950 p-6 text-white shadow-xl shadow-slate-300/70 ring-1 ring-slate-900/10 md:p-7">
+              <div className="flex items-start gap-4">
+                <span className="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-cyan-400 text-slate-950">
+                  <ShieldCheck className="h-6 w-6" />
+                </span>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">24/7 posture</p>
+                  <h3 className="mt-2 text-2xl font-black">Emergency response support</h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-300">
+                    QRF is positioned to support urgent security requirements, field coordination, and response planning for critical operations.
                   </p>
-                  <div className="text-sm text-gray-400">
-                    <p className="font-medium text-gray-300">Primary Service Areas:</p>
-                    <p>• Port Moresby Metropolitan Area</p>
-                    <p>• Central Province</p>
-                    <p>• Nationwide Coverage Available</p>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
 
-              <Card className="border-none bg-slate-800/50 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mr-4">
-                      <Shield className="w-6 h-6 text-white" />
+              <div className="mt-7 grid gap-3">
+                {contactPoints.map((point) => (
+                  <div key={point} className="flex items-start gap-3 rounded-lg bg-white/[0.06] p-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-cyan-300" />
+                    <span className="text-sm font-semibold leading-6 text-slate-200">{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
+              <div className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200/80">
+                <div className="mb-5 flex items-center gap-3">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-50 text-cyan-700 ring-1 ring-cyan-100">
+                    <MapPin className="h-5 w-5" />
+                  </span>
+                  <h3 className="text-xl font-black text-slate-950">Service areas</h3>
+                </div>
+                <div className="grid gap-2">
+                  {serviceAreas.map((area) => (
+                    <div key={area} className="flex items-center gap-2 text-sm font-semibold text-slate-600">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
+                      {area}
                     </div>
-                    <h3 className="text-2xl font-bold text-white">24/7 Emergency Response</h3>
-                  </div>
-                  <p className="text-gray-300 mb-4 leading-relaxed">
-                    Our rapid response teams are available around the clock to handle 
-                    security emergencies and critical situations.
-                  </p>
-                  <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4">
-                    <p className="text-sm font-medium text-cyan-400 mb-2">Emergency Hotline:</p>
-                    <p className="text-2xl font-bold text-cyan-400">Available 24/7</p>
-                    <p className="text-xs text-gray-400 mt-2">
-                      For immediate security assistance and emergency response
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-cyan-400 p-6 text-slate-950 shadow-sm ring-1 ring-cyan-300">
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-slate-950 text-cyan-300">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <h3 className="text-xl font-black">Available for urgent requirements</h3>
+                <p className="mt-2 text-sm font-semibold leading-6 text-slate-800">
+                  Use the form to request a call-back and share the operational details your team needs covered.
+                </p>
+              </div>
             </div>
           </div>
         </div>

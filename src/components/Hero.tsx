@@ -1,185 +1,137 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { ArrowRight, CheckCircle2, Radio, ShieldCheck, Siren, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Shield, ArrowRight, Monitor, Zap, Eye } from 'lucide-react';
-import AnimatedCounter from './AnimatedCounter';
+
+const highlights = [
+  '24/7 rapid response coordination',
+  'Command center monitoring capability',
+  'Two-way radio and data communications',
+];
+
+const stats = [
+  { value: '20+', label: 'Years operating experience' },
+  { value: '24/7', label: 'Emergency-ready support' },
+  { value: 'PNG', label: 'Local coverage and insight' },
+];
 
 const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    setIsVisible(true);
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
+    element?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-      {/* Control Room Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black">
-          <div 
-            className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-60"
-            style={{
-              transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
-        </div>
+    <section id="home" className="relative overflow-hidden bg-[#eef3f7] px-4 pb-14 pt-24 md:px-6 md:pb-20 lg:pt-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="relative overflow-hidden rounded-[28px] bg-[#050b1f] text-white shadow-2xl shadow-slate-950/25 ring-1 ring-white/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(0,194,255,0.26),transparent_32%),radial-gradient(circle_at_82%_18%,rgba(14,165,233,0.2),transparent_26%),linear-gradient(135deg,#050b1f_0%,#07172d_48%,#030712_100%)]" />
+          <div className="absolute inset-0 opacity-[0.16] [background-image:linear-gradient(rgba(125,211,252,0.26)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.22)_1px,transparent_1px)] [background-size:42px_42px]" />
 
-        {/* Tech Grid Overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_24px,rgba(59,130,246,0.1)_25px,rgba(59,130,246,0.1)_26px,transparent_27px,transparent_49px),linear-gradient(transparent_24px,rgba(59,130,246,0.1)_25px,rgba(59,130,246,0.1)_26px,transparent_27px,transparent_49px)] bg-[length:50px_50px]"></div>
-        </div>
+          <div className="relative grid min-h-[720px] gap-10 px-6 py-10 sm:px-8 md:min-h-[680px] lg:grid-cols-[1.05fr_0.95fr] lg:px-12 lg:py-14 xl:px-16">
+            <div className="flex flex-col justify-center">
+              <div className="mb-7 inline-flex w-fit items-center gap-3 rounded-full border border-cyan-300/25 bg-white/7 px-4 py-2 text-sm font-semibold text-cyan-100 backdrop-blur">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.9)]" />
+                Papua New Guinea security and communications partner
+              </div>
 
-        {/* Animated Tech Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Radar Sweep Effect */}
-          <div className="absolute top-20 right-20 w-32 h-32 border border-cyan-400/30 rounded-full animate-ping" />
-          <div className="absolute top-20 right-20 w-24 h-24 border border-cyan-400/50 rounded-full animate-pulse" />
-          
-          {/* Data Stream Lines */}
-          <div className="absolute top-1/4 left-3/4 w-48 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-pulse" />
-          <div className="absolute top-1/2 right-1/4 w-32 h-px bg-gradient-to-r from-transparent via-blue-400/60 to-transparent animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute bottom-1/3 left-2/3 w-64 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-pulse" style={{ animationDelay: '2s' }} />
-
-          {/* Monitoring Icons */}
-          <Monitor className="absolute top-32 right-32 w-6 h-6 text-cyan-400/60 animate-pulse" />
-          <Eye className="absolute bottom-32 right-16 w-5 h-5 text-blue-400/60 animate-pulse" style={{ animationDelay: '1.5s' }} />
-          <Zap className="absolute top-1/2 right-40 w-4 h-4 text-cyan-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
-        </div>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-          
-          {/* Left Side - Main Content */}
-          <div className="text-white space-y-8">
-            {/* Enhanced Badge */}
-            <div className={`inline-flex items-center space-x-3 bg-slate-800/60 backdrop-blur-sm border border-cyan-400/30 rounded-full px-6 py-3 transition-all duration-1000 ${isVisible ? 'animate-fade-in animate-stagger-1' : 'opacity-0 translate-y-10'}`}>
-              <Shield className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm font-semibold text-cyan-100">Papua New Guinea's Premier Security Force</span>
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
-            </div>
-
-            {/* Main Heading */}
-            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'animate-slide-up animate-stagger-2' : 'opacity-0 translate-y-20'}`}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-tight">
-                <span className="block text-white">Quick Response</span>
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300">
-                  Force
-                </span>
+              <h1 className="max-w-4xl text-4xl font-black leading-[1.02] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                Security response built for critical PNG operations.
               </h1>
-            </div>
 
-            {/* Description */}
-            <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'animate-fade-in animate-stagger-3' : 'opacity-0'}`}>
-              <p className="text-lg sm:text-xl mb-4 text-gray-300 max-w-2xl leading-relaxed">
-                Leading security and emergency response firm with <span className="font-bold text-cyan-400">20+ years</span> of expertise
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                QRF Communications brings emergency response, asset protection, command center operations, and radio communications into one field-ready security partner.
               </p>
-              <p className="text-base text-gray-400 mb-8 max-w-xl">
-                Specialized in rapid threat mitigation, asset protection, and advanced communication solutions across Papua New Guinea
-              </p>
-            </div>
 
-            {/* CTA Buttons */}
-            <div className={`flex flex-col sm:flex-row gap-4 mb-8 transition-all duration-1000 delay-700 ${isVisible ? 'animate-scale-in animate-stagger-4' : 'opacity-0 translate-y-10'}`}>
-              <Button 
-                size="lg" 
-                className="bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold px-8 py-4 text-lg shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:shadow-cyan-400/30 hover:scale-105" 
-                onClick={() => scrollToSection('#services')}
-              >
-                Our Services
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-400 px-8 py-4 text-lg backdrop-blur-sm transition-all duration-300 hover:scale-105" 
-                onClick={() => scrollToSection('#contact')}
-              >
-                Contact Us
-              </Button>
-            </div>
-          </div>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  size="lg"
+                  className="h-12 rounded-md bg-cyan-400 px-7 text-base font-black text-slate-950 shadow-lg shadow-cyan-500/20 hover:bg-cyan-300"
+                  onClick={() => scrollToSection('#contact')}
+                >
+                  Request Security Assessment
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-12 rounded-md border-white/20 bg-white/5 px-7 text-base font-bold text-white backdrop-blur hover:bg-white/10 hover:text-white"
+                  onClick={() => scrollToSection('#services')}
+                >
+                  Explore Services
+                </Button>
+              </div>
 
-          {/* Right Side - Stats Grid */}
-          <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'animate-fade-in animate-stagger-5' : 'opacity-0 scale-95'}`}>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-slate-800/40 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 hover:bg-slate-800/60 hover:border-cyan-400/40 transition-all duration-500 group">
-                <AnimatedCounter 
-                  end={20} 
-                  suffix="+" 
-                  className="text-4xl font-black text-cyan-400 mb-2 group-hover:scale-110 transition-transform duration-300" 
-                />
-                <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">Years Experience</div>
+              <div className="mt-10 grid gap-3 sm:max-w-xl">
+                {highlights.map((item) => (
+                  <div key={item} className="flex items-center gap-3 text-sm font-semibold text-slate-200">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-md bg-cyan-400/12 text-cyan-200 ring-1 ring-cyan-300/25">
+                      <CheckCircle2 className="h-4 w-4" />
+                    </span>
+                    {item}
+                  </div>
+                ))}
               </div>
-              
-              <div className="bg-slate-800/40 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 hover:bg-slate-800/60 hover:border-cyan-400/40 transition-all duration-500 group">
-                <div className="text-4xl font-black text-green-400 mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
-                <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">Emergency Response</div>
-              </div>
-              
-              <div className="bg-slate-800/40 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 hover:bg-slate-800/60 hover:border-cyan-400/40 transition-all duration-500 group">
-                <AnimatedCounter 
-                  end={100} 
-                  suffix="%" 
-                  className="text-4xl font-black text-yellow-400 mb-2 group-hover:scale-110 transition-transform duration-300" 
-                />
-                <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">PNG Owned</div>
-              </div>
-              
-              <div className="bg-slate-800/40 backdrop-blur-sm border border-cyan-400/20 rounded-xl p-6 hover:bg-slate-800/60 hover:border-cyan-400/40 transition-all duration-500 group">
-                <div className="text-4xl font-black text-purple-400 mb-2 group-hover:scale-110 transition-transform duration-300">Full</div>
-                <div className="text-xs text-gray-400 font-medium uppercase tracking-wider">Control Room Built</div>
+
+              <div className="mt-12 grid grid-cols-3 gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-2 backdrop-blur md:max-w-2xl">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="rounded-lg bg-white/[0.06] px-3 py-4">
+                    <div className="text-2xl font-black text-cyan-200 sm:text-3xl">{stat.value}</div>
+                    <div className="mt-1 text-[11px] font-semibold uppercase leading-4 tracking-wide text-slate-400">{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Tech Status Indicators */}
-            <div className="mt-8 space-y-3">
-              <div className="flex items-center justify-between bg-slate-800/30 backdrop-blur-sm border border-cyan-400/20 rounded-lg px-4 py-3">
-                <span className="text-sm text-gray-300">System Status</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-xs text-green-400 font-medium">OPERATIONAL</span>
+            <div className="relative flex min-h-[520px] items-end justify-center lg:min-h-0">
+              <div className="absolute left-2 top-10 hidden w-64 rounded-xl border border-cyan-200/15 bg-slate-950/55 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur xl:block">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400 text-slate-950">
+                    <Siren className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-black">Live Response Stack</p>
+                    <p className="text-xs text-slate-400">Monitoring, dispatch, field teams</p>
+                  </div>
+                </div>
+                <div className="space-y-4 border-l border-cyan-300/30 pl-4">
+                  {['Assess threat', 'Coordinate response', 'Maintain comms'].map((step) => (
+                    <div key={step} className="relative text-sm font-semibold text-slate-200">
+                      <span className="absolute -left-[22px] top-1.5 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.9)]" />
+                      {step}
+                    </div>
+                  ))}
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between bg-slate-800/30 backdrop-blur-sm border border-cyan-400/20 rounded-lg px-4 py-3">
-                <span className="text-sm text-gray-300">Response Time</span>
-                <span className="text-xs text-cyan-400 font-medium">&lt; 5 MIN</span>
+
+              <div className="absolute bottom-10 right-0 z-20 grid w-[min(100%,23rem)] gap-3 rounded-xl border border-white/12 bg-slate-950/65 p-4 shadow-2xl shadow-slate-950/35 backdrop-blur md:right-4 lg:bottom-12">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">Operational status</p>
+                    <p className="mt-1 text-lg font-black text-white">Ready for deployment</p>
+                  </div>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-cyan-400/15 text-cyan-200 ring-1 ring-cyan-300/30">
+                    <Zap className="h-5 w-5" />
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="rounded-lg bg-white/[0.06] p-3">
+                    <Radio className="mb-2 h-4 w-4 text-cyan-200" />
+                    <p className="text-xs font-semibold text-slate-300">Radio dispatch</p>
+                  </div>
+                  <div className="rounded-lg bg-white/[0.06] p-3">
+                    <ShieldCheck className="mb-2 h-4 w-4 text-cyan-200" />
+                    <p className="text-xs font-semibold text-slate-300">Asset protection</p>
+                  </div>
+                </div>
               </div>
+
+              <img
+                src="/qrf-hero-operator.png"
+                alt="QRF Communications security operator in a command center"
+                className="relative z-10 h-full max-h-[660px] w-full max-w-[620px] object-contain object-bottom drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
+              />
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div 
-          className="w-6 h-12 border-2 border-cyan-400/60 rounded-full flex justify-center cursor-pointer hover:border-cyan-400 hover:scale-110 transition-all duration-300 backdrop-blur-sm bg-slate-900/20" 
-          onClick={() => scrollToSection('#about')}
-        >
-          <div className="w-1 h-3 bg-cyan-400/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

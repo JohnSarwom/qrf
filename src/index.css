@@ -7,6 +7,24 @@
 
 @layer base {
   :root {
+    --qrf-bg-primary: #020a14;
+    --qrf-bg-secondary: #061426;
+    --qrf-bg-card: #081a2f;
+    --qrf-bg-card-raised: #0b213c;
+    --qrf-blue-primary: #0969f9;
+    --qrf-blue-bright: #1685ff;
+    --qrf-blue-cyan: #3db7ff;
+    --qrf-text-primary: #ffffff;
+    --qrf-text-secondary: #bac7d9;
+    --qrf-text-muted: #8292a8;
+    --qrf-border: rgba(255, 255, 255, 0.12);
+    --qrf-border-active: rgba(22, 133, 255, 0.65);
+    --qrf-radius-sm: 10px;
+    --qrf-radius-md: 16px;
+    --qrf-radius-lg: 22px;
+    --qrf-shadow-card: 0 16px 40px rgba(0, 0, 0, 0.24);
+    --qrf-glow-blue: 0 0 36px rgba(22, 133, 255, 0.18);
+
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -85,15 +103,153 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+
+  section,
+  footer {
+    scroll-margin-top: 96px;
+  }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .qrf-page {
+    min-height: 100vh;
+    overflow-x: clip;
+    background:
+      radial-gradient(circle at 72% 4%, rgba(9, 105, 249, 0.16), transparent 28rem),
+      var(--qrf-bg-primary);
+    color: var(--qrf-text-primary);
+  }
+
+  .qrf-container {
+    width: min(calc(100% - clamp(2rem, 8vw, 8rem)), 1360px);
+    margin-inline: auto;
+  }
+
+  .qrf-section {
+    padding-block: clamp(3.5rem, 6vw, 5rem);
+  }
+
+  .qrf-section-lg {
+    padding-block: clamp(4.5rem, 7vw, 6.5rem);
+  }
+
+  .qrf-section-sm {
+    padding-block: clamp(2.25rem, 4vw, 3.5rem);
+  }
+
+  .qrf-section-gap {
+    margin-top: clamp(2rem, 3vw, 3rem);
+  }
+
+  .qrf-card-padding {
+    padding: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .qrf-section-grid {
+    background-image:
+      linear-gradient(rgba(61, 183, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61, 183, 255, 0.045) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .qrf-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--qrf-blue-cyan);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .qrf-kicker::before {
+    width: 1.5rem;
+    height: 1px;
+    background: currentColor;
+    content: "";
+  }
+
+  .qrf-display {
+    font-family: 'Manrope Variable', 'Manrope', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4.75rem);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+  }
+
+  .qrf-heading {
+    font-family: 'Manrope Variable', 'Manrope', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 720;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
+  }
+
+  .qrf-card-surface {
+    border: 1px solid var(--qrf-border);
+    border-radius: var(--qrf-radius-md);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 56%),
+      var(--qrf-bg-card);
+    box-shadow: var(--qrf-shadow-card);
+  }
+
+  .qrf-rule-list > * + * {
+    border-top: 1px solid var(--qrf-border);
+  }
+
+  .qrf-editorial-image {
+    border: 1px solid var(--qrf-border);
+    border-radius: var(--qrf-radius-lg);
+    box-shadow: var(--qrf-shadow-card);
+  }
+
+  .qrf-network-line {
+    position: relative;
+  }
+
+  .qrf-network-line::after {
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--qrf-blue-primary), transparent);
+    content: "";
+    opacity: 0.65;
   }
 }
 
 @layer utilities {
+  .qrf-balance {
+    text-wrap: balance;
+  }
+
+  .qrf-pretty {
+    text-wrap: pretty;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Enhanced Gradients */
   .gradient-blue {
     background: linear-gradient(135deg, hsl(var(--qrf-blue)) 0%, hsl(var(--qrf-blue-light)) 100%);
@@ -286,4 +442,22 @@
 
 .particle {
   animation: particle-float 8s infinite linear;
+}
+
+@media (max-width: 767px) {
+  section,
+  footer {
+    scroll-margin-top: 84px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

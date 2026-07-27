@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-07-27",
+  "assets": [
+    {
+      "id": "qrf-monogram-source",
+      "path": "/assets/qrf/logos/qrf-monogram-source.png",
+      "origin": "Client-supplied QRF artwork folder",
+      "status": "reference-only",
+      "notes": "Official supplied raster mark. Obtain approved vector and reversed exports before final navigation implementation."
+    },
+    {
+      "id": "hero-desktop",
+      "path": "/assets/qrf/hero/hero-desktop.webp",
+      "origin": "Generated for the approved QRF rebrand direction",
+      "status": "approved-concept",
+      "width": 1672,
+      "height": 941,
+      "notes": "Generic Papua New Guinean-inspired tropical operating environment; no specific landmark or project claim."
+    },
+    {
+      "id": "hero-tablet",
+      "path": "/assets/qrf/hero/hero-tablet.webp",
+      "origin": "Art-directed crop of hero-desktop",
+      "status": "approved-concept",
+      "width": 1254,
+      "height": 941
+    },
+    {
+      "id": "hero-mobile",
+      "path": "/assets/qrf/hero/hero-mobile.webp",
+      "origin": "Art-directed crop of hero-desktop",
+      "status": "approved-concept",
+      "width": 705,
+      "height": 941
+    },
+    {
+      "id": "business-internet",
+      "path": "/assets/qrf/isp/business-internet.webp",
+      "origin": "Generated for the approved QRF rebrand direction",
+      "status": "approved-concept",
+      "width": 1200,
+      "height": 800,
+      "notes": "Generic enterprise network environment; no specific city or project claim."
+    },
+    {
+      "id": "remote-site-connectivity",
+      "path": "/assets/qrf/starlink/starlink-field-operation.webp",
+      "origin": "Generated for the approved QRF rebrand direction",
+      "status": "approved-concept",
+      "width": 1200,
+      "height": 800,
+      "notes": "Generic satellite-connectivity concept; no product logo or completed-project claim."
+    },
+    {
+      "id": "industries-starlink-pom-operation",
+      "path": "/assets/qrf/starlink/starlink-pom-operation.webp",
+      "origin": "Composited for the QRF Industries page using the client-supplied Port Moresby harbour reference",
+      "status": "approved-concept",
+      "width": 1280,
+      "height": 720,
+      "notes": "Operational satellite-connectivity concept with a Port Moresby harbour backdrop; not a completed-project photograph."
+    },
+    {
+      "id": "motorola-radios",
+      "path": "/assets/qrf/radio/motorola-radios.webp",
+      "origin": "Client-supplied QRF artwork folder",
+      "status": "client-supplied-candidate",
+      "width": 1200,
+      "height": 800,
+      "notes": "Requires final hardware and brand-use review before publication."
+    },
+    {
+      "id": "camera-range",
+      "path": "/assets/qrf/cctv/camera-range.webp",
+      "origin": "Client-supplied QRF artwork folder",
+      "status": "client-supplied-candidate",
+      "width": 1200,
+      "height": 800,
+      "notes": "Requires final Avigilon product and brand-use review before publication."
+    },
+    {
+      "id": "network-city",
+      "path": "/assets/qrf/networks/network-city-pom-no-landmark.webp",
+      "origin": "Client-supplied QRF artwork folder",
+      "status": "approved-concept",
+      "width": 1054,
+      "height": 702,
+      "notes": "Generic networked-city concept; must not be labelled as Port Moresby."
+    },
+    {
+      "id": "integrated-security",
+      "path": "/assets/qrf/cctv/integrated-security.webp",
+      "origin": "Client-supplied QRF artwork folder",
+      "status": "approved-concept",
+      "width": 1200,
+      "height": 800,
+      "notes": "Conceptual monitoring environment; not a completed-project photograph."
+    },
+    {
+      "id": "operations-centre",
+      "path": "/assets/qrf/backgrounds/operations-centre.webp",
+      "origin": "Existing QRF website workspace asset",
+      "status": "approved-concept",
+      "width": 1200,
+      "height": 800,
+      "notes": "Conceptual operations environment; not a completed-project photograph."
+    },
+    {
+      "id": "solutions-operations",
+      "path": "/assets/qrf/pages/solutions-operations.webp",
+      "origin": "Generated for the QRF Solutions page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "industries-highlands",
+      "path": "/assets/qrf/pages/industries-highlands.webp",
+      "origin": "Generated for the QRF Industries page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "projects-commissioning",
+      "path": "/assets/qrf/pages/projects-commissioning.webp",
+      "origin": "Generated for the QRF Projects page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "about-team",
+      "path": "/assets/qrf/pages/about-team.webp",
+      "origin": "Generated for the QRF About page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "about-png-context",
+      "path": "/assets/qrf/pages/about-png-context.webp",
+      "origin": "Generated for the QRF About page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "support-diagnostics",
+      "path": "/assets/qrf/pages/support-diagnostics.webp",
+      "origin": "Generated for the QRF Support page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "contact-consultation",
+      "path": "/assets/qrf/pages/contact-consultation.webp",
+      "origin": "Generated for the QRF Contact page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-isp-office-network",
+      "path": "/assets/qrf/solution-detail/isp-office-network.webp",
+      "origin": "Generated for the ISP and Business Internet detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-starlink-community-site",
+      "path": "/assets/qrf/solution-detail/starlink-community-site.webp",
+      "origin": "Generated for the Starlink Connectivity detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-radio-logistics-operation",
+      "path": "/assets/qrf/solution-detail/radio-logistics-operation.webp",
+      "origin": "Generated for the Radio Communications detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-cctv-control-room",
+      "path": "/assets/qrf/solution-detail/cctv-control-room.webp",
+      "origin": "Generated for the CCTV and Video Security detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-network-installation",
+      "path": "/assets/qrf/solution-detail/network-installation.webp",
+      "origin": "Generated for the Network Infrastructure detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-integrated-access-control",
+      "path": "/assets/qrf/solution-detail/integrated-access-control.webp",
+      "origin": "Generated for the Integrated Security detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "detail-support-remote-maintenance",
+      "path": "/assets/qrf/solution-detail/support-remote-maintenance.webp",
+      "origin": "Generated for the Technical Support detail page",
+      "status": "approved-concept",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "id": "png-map",
+      "path": "/assets/qrf/overlays/png-map.png",
+      "origin": "Natural Earth 1:10m Admin 0 Countries geometry",
+      "status": "approved-reference-data",
+      "width": 1600,
+      "height": 940,
+      "notes": "Papua New Guinea country geometry rendered locally for the Built for Papua New Guinea section."
+    },
+    {
+      "id": "homepage-social-card",
+      "path": "/og.png",
+      "origin": "Generated for the approved QRF rebrand direction",
+      "status": "approved-concept",
+      "width": 1672,
+      "height": 941,
+      "notes": "Open Graph social-share artwork using the Phase 5 homepage message and visual direction."
+    }
+  ]
+}

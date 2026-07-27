@@ -1,196 +1,130 @@
-
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Cctv, Shield, AlertTriangle } from 'lucide-react';
+import { AlertTriangle, ArrowRight, Cctv, CheckCircle2, Radio, Shield, SignalHigh } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+
+const solutions = [
+  {
+    icon: Cctv,
+    title: 'Command Center Solutions',
+    description: 'Control room planning, monitoring workflows, CCTV coordination, and incident tracking systems for security operations.',
+    points: ['Centralized monitoring', 'Incident logging', 'Dispatch coordination'],
+  },
+  {
+    icon: Radio,
+    title: 'Two-Way Radio & Data',
+    description: 'Reliable field communications for teams operating across urban, industrial, remote, or high-risk environments.',
+    points: ['Portable and mobile radios', 'Repeater and trunking support', 'Dispatch-ready networks'],
+  },
+  {
+    icon: AlertTriangle,
+    title: 'Hazard & Safety Systems',
+    description: 'Operational safety support for risk identification, emergency planning, response escalation, and compliance workflows.',
+    points: ['Risk assessment support', 'Emergency readiness', 'Safety monitoring'],
+  },
+];
+
+const metrics = [
+  { value: '01', label: 'Assess' },
+  { value: '02', label: 'Connect' },
+  { value: '03', label: 'Respond' },
+];
 
 const Solutions = () => {
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section id="solutions" className="py-20 bg-slate-800 relative overflow-hidden">
-      {/* Tech Grid Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, cyan 1px, transparent 1px),
-                           radial-gradient(circle at 75% 75%, teal 1px, transparent 1px)`,
-          backgroundSize: '50px 50px'
-        }} />
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-3 bg-cyan-500/20 rounded-full px-6 py-3 mb-6 border border-cyan-500/30">
-              <Shield className="w-5 h-5 text-cyan-400" />
-              <span className="text-sm font-bold text-cyan-400 uppercase tracking-wider">SPECIALIZED SOLUTIONS</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+    <section id="solutions" className="relative overflow-hidden bg-[#050b1f] px-4 py-16 text-white md:px-6 md:py-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(34,211,238,0.2),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(14,165,233,0.14),transparent_34%)]" />
+      <div className="absolute inset-0 opacity-[0.13] [background-image:linear-gradient(rgba(125,211,252,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,0.18)_1px,transparent_1px)] [background-size:48px_48px]" />
+
+      <div className="relative mx-auto max-w-7xl">
+        <div className="mb-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-white/7 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-cyan-200 backdrop-blur">
+              <SignalHigh className="h-4 w-4" />
               Specialized Solutions
+            </div>
+            <h2 className="text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
+              Technical infrastructure for teams that need dependable response.
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Advanced technology solutions for comprehensive security management, communication systems, and workplace safety.
-            </p>
+          </div>
+          <p className="max-w-2xl text-base leading-8 text-slate-300 lg:justify-self-end">
+            QRF designs and supports practical systems that connect command rooms, field personnel, radio communications, and safety workflows across demanding PNG environments.
+          </p>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="relative min-h-[520px] overflow-hidden rounded-2xl bg-slate-950 shadow-2xl shadow-cyan-950/20 ring-1 ring-white/10">
+            <img
+              src="/qrf-solutions-tech.png"
+              alt="QRF integrated command center and radio communications solutions"
+              className="h-full min-h-[520px] w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent" />
+            <div className="absolute left-5 right-5 top-5 grid gap-3 sm:left-auto sm:w-72">
+              {metrics.map((item) => (
+                <div key={item.label} className="flex items-center justify-between rounded-xl border border-white/10 bg-slate-950/60 px-4 py-3 backdrop-blur">
+                  <span className="text-sm font-black text-cyan-200">{item.value}</span>
+                  <span className="text-xs font-black uppercase tracking-[0.18em] text-slate-300">{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <div className="max-w-xl rounded-2xl border border-white/15 bg-slate-950/65 p-5 backdrop-blur">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-200">Connected response</p>
+                <h3 className="mt-2 text-2xl font-black">From control room visibility to field team execution.</h3>
+              </div>
+            </div>
           </div>
 
-          {/* Solutions Grid */}
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Command Center Solutions */}
-            <Card className="border-none bg-slate-900/50 border-slate-700 overflow-hidden hover:border-cyan-500/50 transition-all duration-300 group">
-              <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
-                <img 
-                  src="https://images.unsplash.com/photo-1551038247-3d9af20df552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Command Center"
-                  className="w-full h-full object-cover opacity-80"
-                />
-              </div>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Cctv className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Command Center Solutions</h3>
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  With two decades of expertise in command center operations, QRF has designed and 
-                  implemented state-of-the-art control rooms, including the G4S Control Room in Konedobu.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+          <div className="grid gap-4">
+            {solutions.map((solution, index) => {
+              const Icon = solution.icon;
+              return (
+                <article
+                  key={solution.title}
+                  className={`rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-xl shadow-slate-950/15 backdrop-blur transition-all hover:-translate-y-1 hover:border-cyan-300/35 ${
+                    index === 0 ? 'lg:rounded-t-[28px]' : ''
+                  } ${index === solutions.length - 1 ? 'lg:rounded-b-[28px]' : ''}`}
+                >
+                  <div className="flex gap-4">
+                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-cyan-400 text-slate-950">
+                      <Icon className="h-6 w-6" />
+                    </span>
                     <div>
-                      <h4 className="font-semibold text-white">Centralized Security Monitoring</h4>
-                      <p className="text-sm text-gray-400">Real-time CCTV surveillance and incident tracking</p>
+                      <h3 className="text-xl font-black leading-tight">{solution.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-slate-300">{solution.description}</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Radio Dispatch Coordination</h4>
-                      <p className="text-sm text-gray-400">Integrated communication for rapid response teams</p>
-                    </div>
+                  <div className="mt-5 grid gap-2 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                    {solution.points.map((point) => (
+                      <div key={point} className="flex items-center gap-2 rounded-lg bg-slate-950/45 px-3 py-2 text-xs font-bold text-slate-200">
+                        <CheckCircle2 className="h-4 w-4 flex-none text-cyan-300" />
+                        {point}
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Ergonomic ISO 11064 Design</h4>
-                      <p className="text-sm text-gray-400">Optimized layouts for maximum operational efficiency</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">NCCC Hotline Management</h4>
-                      <p className="text-sm text-gray-400">Dedicated Call Centre Management System (CCMS) for tracking municipal service requests</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </article>
+              );
+            })}
 
-            {/* Communications Solutions */}
-            <Card className="border-none bg-slate-900/50 border-slate-700 overflow-hidden hover:border-cyan-500/50 transition-all duration-300 group">
-              <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
-                <img 
-                  src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Radio Communications"
-                  className="w-full h-full object-cover opacity-80"
-                />
+            <div className="rounded-2xl border border-cyan-300/20 bg-cyan-400 p-6 text-slate-950 shadow-xl shadow-cyan-950/20">
+              <div className="flex items-start justify-between gap-5">
+                <div>
+                  <Shield className="mb-4 h-7 w-7" />
+                  <h3 className="text-2xl font-black">Need a tailored security system?</h3>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-slate-800">
+                    QRF can scope a practical response, communications, and monitoring setup around your operation.
+                  </p>
+                </div>
+                <Button onClick={scrollToContact} className="hidden rounded-md bg-slate-950 text-white hover:bg-white hover:text-slate-950 sm:inline-flex">
+                  Talk to QRF
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Communications - Two-Way Radio & Data</h3>
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  As a leader in advanced radio and data communication, we provide comprehensive 
-                  communication solutions for critical operations across Papua New Guinea.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Two-Way Radios</h4>
-                      <p className="text-sm text-gray-400">Portable, Mobile, Digital, Analog, PoC systems</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Microwave & VSAT Solutions</h4>
-                      <p className="text-sm text-gray-400">Nationwide connectivity for remote operations</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Communication Systems</h4>
-                      <p className="text-sm text-gray-400">Repeaters, Trunking, Dispatch Solutions</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Customized Solutions</h4>
-                      <p className="text-sm text-gray-400">For Public Safety, Banking, Mining, Logistics & More</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Hazard and Safety Solutions */}
-            <Card className="border-none bg-slate-900/50 border-slate-700 overflow-hidden hover:border-cyan-500/50 transition-all duration-300 group">
-              <div className="aspect-video bg-gradient-to-br from-cyan-500/20 to-teal-500/20">
-                <img 
-                  src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Safety Systems"
-                  className="w-full h-full object-cover opacity-80"
-                />
-              </div>
-              <CardContent className="p-8">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-teal-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <AlertTriangle className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">Hazard and Safety Solutions</h3>
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Comprehensive workplace safety and hazard management systems designed to protect 
-                  personnel and assets through advanced monitoring and response technologies.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Risk Assessment Software</h4>
-                      <p className="text-sm text-gray-400">Automated hazard identification and risk evaluation systems</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Emergency Response Management</h4>
-                      <p className="text-sm text-gray-400">Real-time incident response and evacuation coordination</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Safety Compliance Tracking</h4>
-                      <p className="text-sm text-gray-400">Automated reporting and regulatory compliance monitoring</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <div>
-                      <h4 className="font-semibold text-white">Environmental Monitoring</h4>
-                      <p className="text-sm text-gray-400">Air quality, noise levels, and environmental hazard detection</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
 	darkMode: ["class"],
@@ -52,6 +53,18 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				qrf: {
+					ink: 'var(--qrf-bg-primary)',
+					navy: 'var(--qrf-bg-secondary)',
+					card: 'var(--qrf-bg-card)',
+					raised: 'var(--qrf-bg-card-raised)',
+					blue: 'var(--qrf-blue-primary)',
+					bright: 'var(--qrf-blue-bright)',
+					cyan: 'var(--qrf-blue-cyan)',
+					text: 'var(--qrf-text-primary)',
+					soft: 'var(--qrf-text-secondary)',
+					muted: 'var(--qrf-text-muted)',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -66,7 +79,18 @@ export default {
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+				'qrf-sm': 'var(--qrf-radius-sm)',
+				'qrf-md': 'var(--qrf-radius-md)',
+				'qrf-lg': 'var(--qrf-radius-lg)',
+			},
+			fontFamily: {
+				heading: ['Manrope Variable', 'Manrope', 'sans-serif'],
+				body: ['Inter Variable', 'Inter', 'sans-serif'],
+			},
+			boxShadow: {
+				'qrf-card': 'var(--qrf-shadow-card)',
+				'qrf-glow': 'var(--qrf-glow-blue)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -92,5 +116,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindcssAnimate],
 } satisfies Config;
